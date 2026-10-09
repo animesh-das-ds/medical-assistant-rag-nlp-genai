@@ -1,0 +1,3299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Problem Statement</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Business Context</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">The healthcare industry is rapidly evolving, with professionals facing increasing challenges in managing vast volumes of medical data while delivering accurate and timely diagnoses. The need for quick access to comprehensive, reliable, and up-to-date medical knowledge is critical for improving patient outcomes and ensuring informed decision-making in a fast-paced environment.<br><br>Healthcare professionals often encounter information overload, struggling to sift through extensive research and data to create accurate diagnoses and treatment plans. This challenge is amplified by the need for efficiency, particularly in emergencies, where time-sensitive decisions are vital. Furthermore, access to trusted, current medical information from renowned manuals and research papers is essential for maintaining high standards of care.<br><br>To address these challenges, healthcare centers can focus on integrating systems that streamline access to medical knowledge, provide tools to support quick decision-making, and enhance efficiency. Leveraging centralized knowledge platforms and ensuring healthcare providers have continuous access to reliable resources can significantly improve patient care and operational effectiveness.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><strong>Common Questions to Answer</strong><br><br><strong>1. Diagnostic Assistance</strong>: "What are the common symptoms and treatments for pulmonary embolism?"<br><br><strong>2. Drug Information</strong>: "Can you provide the trade names of medications used for treating hypertension?"<br><br><strong>3. Treatment Plans</strong>: "What are the first-line options and alternatives for managing rheumatoid arthritis?"<br><br><strong>4. Specialty Knowledge</strong>: "What are the diagnostic steps for suspected endocrine disorders?"<br><br><strong>5. Critical Care Protocols</strong>: "What is the protocol for managing sepsis in a critical care unit?"</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Objective</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">As an AI specialist, your task is to develop a RAG-based AI solution using renowned medical manuals to address healthcare challenges. The objective is to <strong>understand</strong> issues like information overload, <strong>apply</strong> AI techniques to streamline decision-making, <strong>analyze</strong> its impact on diagnostics and patient outcomes, <strong>evaluate</strong> its potential to standardize care practices, and <strong>create</strong> a functional prototype demonstrating its feasibility and effectiveness.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Data Description</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">The <strong>Merck Manuals</strong> are medical references published by the American pharmaceutical company Merck & Co., that cover a wide range of medical topics, including disorders, tests, diagnoses, and drugs. The manuals have been published since 1899, when Merck & Co. was still a subsidiary of the German company Merck.<br><br>The manual is provided as a PDF with over 4,000 pages divided into 23 sections.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Installing and Importing Necessary Libraries and Dependencies</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Installation for GPU llama-cpp-python
+# uncomment and run the following code in case GPU is being used
+!CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python==0.1.85 --force-reinstall --no-cache-dir -q
+
+# Installation for CPU llama-cpp-python
+# uncomment and run the following code in case GPU is not being used
+# !CMAKE_ARGS="-DLLAMA_CUBLAS=off" FORCE_CMAKE=1 pip install llama-cpp-python==0.1.85 --force-reinstall --no-cache-dir -q</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">[?25l     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/1.8 MB[0m [31m?[0m eta [36m-:--:--[0m[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.8/1.8 MB[0m [31m263.7 MB/s[0m eta [36m0:00:00[0m
+[?25h  Installing build dependencies ... [?25l[?25hdone
+  Getting requirements to build wheel ... [?25l[?25hdone
+  Preparing metadata (pyproject.toml) ... [?25l[?25hdone
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m45.5/45.5 kB[0m [31m296.9 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m16.7/16.7 MB[0m [31m377.3 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m44.6/44.6 kB[0m [31m310.2 MB/s[0m eta [36m0:00:00[0m
+[?25h  Building wheel for llama-cpp-python (pyproject.toml) ... [?25l[?25hdone
+[31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+numba 0.60.0 requires numpy&lt;2.1,&gt;=1.22, but you have numpy 2.5.0 which is incompatible.[0m[31m
+[0m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># For installing the libraries &amp; downloading models from HF Hub
+!pip install huggingface_hub==0.35.3 pandas==2.2.2 tiktoken==0.12.0 pymupdf==1.26.5 langchain==0.3.27 langchain-community==0.3.31 chromadb==1.1.1 sentence-transformers==5.1.1 numpy==2.3.3 -q</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m62.1/62.1 kB[0m [31m6.0 MB/s[0m eta [36m0:00:00[0m
+[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m52.0/52.0 kB[0m [31m5.8 MB/s[0m eta [36m0:00:00[0m
+[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m44.0/44.0 kB[0m [31m3.6 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m564.3/564.3 kB[0m [31m37.5 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.2/1.2 MB[0m [31m80.1 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m24.1/24.1 MB[0m [31m93.7 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.0/1.0 MB[0m [31m68.4 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m2.5/2.5 MB[0m [31m113.2 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m19.9/19.9 MB[0m [31m97.1 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m486.6/486.6 kB[0m [31m43.6 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m16.6/16.6 MB[0m [31m107.0 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m278.2/278.2 kB[0m [31m30.2 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m4.6/4.6 MB[0m [31m116.8 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m461.3/461.3 kB[0m [31m41.5 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m18.7/18.7 MB[0m [31m31.9 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m72.5/72.5 kB[0m [31m8.2 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m178.9/178.9 kB[0m [31m20.3 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m61.9/61.9 kB[0m [31m6.0 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m203.7/203.7 kB[0m [31m23.2 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m66.5/66.5 kB[0m [31m7.7 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m105.4/105.4 kB[0m [31m11.8 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m71.6/71.6 kB[0m [31m8.2 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m60.6/60.6 kB[0m [31m6.3 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m73.1/73.1 kB[0m [31m8.1 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m12.0/12.0 MB[0m [31m120.7 MB/s[0m eta [36m0:00:00[0m
+[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m51.0/51.0 kB[0m [31m4.5 MB/s[0m eta [36m0:00:00[0m
+[?25h[31mERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+google-colab 1.0.0 requires requests==2.32.4, but you have requests 2.34.2 which is incompatible.
+opentelemetry-exporter-otlp-proto-http 1.38.0 requires opentelemetry-exporter-otlp-proto-common==1.38.0, but you have opentelemetry-exporter-otlp-proto-common 1.43.0 which is incompatible.
+opentelemetry-exporter-otlp-proto-http 1.38.0 requires opentelemetry-proto==1.38.0, but you have opentelemetry-proto 1.43.0 which is incompatible.
+opentelemetry-exporter-otlp-proto-http 1.38.0 requires opentelemetry-sdk~=1.38.0, but you have opentelemetry-sdk 1.43.0 which is incompatible.
+langgraph 1.2.5 requires langchain-core&lt;2,&gt;=1.4.7, but you have langchain-core 0.3.86 which is incompatible.
+langgraph-prebuilt 1.1.0 requires langchain-core&gt;=1.3.1, but you have langchain-core 0.3.86 which is incompatible.
+opentelemetry-exporter-gcp-logging 1.11.0a0 requires opentelemetry-sdk&lt;1.39.0,&gt;=1.35.0, but you have opentelemetry-sdk 1.43.0 which is incompatible.
+langgraph-sdk 0.4.2 requires langchain-core&lt;2,&gt;=1.4.0, but you have langchain-core 0.3.86 which is incompatible.
+numba 0.60.0 requires numpy&lt;2.1,&gt;=1.22, but you have numpy 2.3.3 which is incompatible.
+google-adk 1.29.0 requires opentelemetry-api&lt;1.39.0,&gt;=1.36.0, but you have opentelemetry-api 1.43.0 which is incompatible.
+google-adk 1.29.0 requires opentelemetry-sdk&lt;1.39.0,&gt;=1.36.0, but you have opentelemetry-sdk 1.43.0 which is incompatible.[0m[31m
+[0m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Libraries for processing dataframes,text
+import json,os
+import tiktoken
+import pandas as pd
+
+#Libraries for Loading Data, Chunking, Embedding, and Vector Databases
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyMuPDFLoader
+from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
+from langchain_community.vectorstores import Chroma
+
+#Libraries for downloading and loading the llm
+from huggingface_hub import hf_hub_download
+from llama_cpp import Llama</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Question Answering using LLM</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">#### Downloading and Loading the model</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>model_name_or_path = "TheBloke/Mistral-7B-Instruct-v0.2-GGUF"
+model_basename = "mistral-7b-instruct-v0.2.Q4_K_M.gguf"
+
+model_path = hf_hub_download(
+    repo_id=model_name_or_path,
+    filename=model_basename
+)
+
+llm = Llama(
+    model_path=model_path,
+    n_ctx=4096,
+    n_gpu_layers=35,
+    n_batch=512
+)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:94: UserWarning: 
+The secret `HF_TOKEN` does not exist in your Colab secrets.
+To authenticate with the Hugging Face Hub, create a token in your settings tab (https://huggingface.co/settings/tokens), set it as secret in your Google Colab and restart your session.
+You will be able to reuse this secret in all of your notebooks.
+Please note that authentication is recommended but still optional to access public models or datasets.
+  warnings.warn(
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>mistral-7b-instruct-v0.2.Q4_K_M.gguf:   0%|          | 0.00/4.37G [00:00&lt;?, ?B/s]</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">AVX = 1 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | FMA = 1 | NEON = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | 
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">#### Response</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def response(query,max_tokens=128,temperature=0,top_p=0.95,top_k=50):
+    model_output = llm(
+      prompt=query,
+      max_tokens=max_tokens,
+      temperature=temperature,
+      top_p=top_p,
+      top_k=top_k
+    )
+
+    return model_output['choices'][0]['text']</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 1: What is the protocol for managing sepsis in a critical care unit?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [12]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query_1 = """[INST]
+What is the protocol for managing sepsis in a critical care unit?
+[/INST]"""
+
+answer_1 = response(query_1, max_tokens=700)
+print(answer_1)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> Sepsis is a life-threatening condition caused by the body's response to an infection, and managing it effectively in a critical care unit requires a multidisciplinary approach. Here are some key steps in the protocol for managing sepsis in a critical care unit:
+1. Early recognition and diagnosis: Identify sepsis early by recognizing the signs and symptoms, such as fever or hypothermia, tachycardia or bradycardia, altered mental status, and lactic acidosis. Use the Sequential Organ Failure Assessment (SOFA) score to assess organ dysfunction.
+2. Resuscitation: Provide fluid resuscitation to maintain adequate tissue perfusion and oxygenation. Aim for a mean arterial pressure of 65 mmHg or higher and a central venous oxygen saturation of 70% or higher.
+3. Antibiotics: Administer broad-spectrum antibiotics as soon as possible based on culture results, clinical suspicion, and local guidelines.
+4. Source control: Identify and address the source of infection, such as drainage of abscesses or debridement of necrotic tissue.
+5. Vasopressors: Use vasopressors to maintain adequate blood pressure if fluid resuscitation is not sufficient.
+6. Corticosteroids: Consider using corticosteroids in certain situations, such as septic shock or ARDS, based on clinical guidelines and patient response.
+7. Inotropes: Use inotropes to improve cardiac output if needed.
+8. Fluid management: Monitor fluid balance carefully and adjust fluid intake and output to maintain euvolemia.
+9. Electrolyte replacement: Replace electrolytes as needed, particularly potassium and phosphorus.
+10. Renal replacement therapy: Consider using renal replacement therapy in patients with severe sepsis or septic shock who have refractory metabolic acidosis or fluid overload.
+11. Nutrition: Provide adequate nutrition to support healing and recovery.
+12. Monitoring: Close monitoring of vital signs, laboratory values, and organ function is essential to detect and respond to changes in the patient's condition promptly.
+13. Communication: Effective communication between healthcare providers, including physicians, nurses, pharmacists, and respiratory therapists, is crucial for coordinated care and timely interventions.
+14. Education: Educate patients and their families about sepsis, its causes, symptoms, treatment, and prevention.
+15. Follow-up care: Provide appropriate follow-up care to prevent readmissions and promote long-term recovery.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 2: What are the common symptoms for appendicitis, and can it be cured via medicine? If not, what surgical procedure should be followed to treat it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query_2 = """[INST]
+What are the common symptoms of appendicitis, and can it be cured via medicine?
+If not, what surgical procedure should be followed to treat it?
+[/INST]"""
+
+answer_2 = response(query_2, max_tokens=512)
+print(answer_2)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> Appendicitis is a medical condition characterized by inflammation of the appendix, a small tube-shaped organ located in the lower right side of the abdomen. The following are common symptoms of appendicitis:
+1. Abdominal pain, usually starting around the navel and then shifting to the lower right side
+2. Loss of appetite
+3. Nausea and vomiting
+4. Fever
+5. Diarrhea or constipation
+6. Abdominal swelling
+7. Inability to pass gas or have a bowel movement
+8. Feeling bloated or full
+9. Pain upon walking, coughing, or moving suddenly
+10. Anxiety and restlessness
+Appendicitis cannot be cured via medicine alone as the inflammation can progress to rupture, leading to peritonitis, a serious and potentially life-threatening condition. If left untreated, peritonitis can cause sepsis, which is a systemic infection that can lead to organ failure and death.
+Therefore, if appendicitis is suspected based on symptoms and physical examination, the standard treatment is surgical removal of the appendix, also known as an appendectomy. The surgery can be performed through an open incision or laparoscopically, depending on the severity of the condition and the preference of the surgeon.
+An appendectomy is typically performed as an emergency procedure due to the risk of rupture and peritonitis. After the surgery, patients are usually advised to rest and avoid strenuous activities for several weeks to allow for proper healing. Recovery time varies from person to person but generally takes about 2-4 weeks.
+It's important to note that everyone's experience with appendicitis is different, and some people may have milder symptoms or no symptoms at all before the appendix ruptures. If you suspect you have appendicitis, it's essential to seek medical attention right away to prevent complications.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 3: What are the effective treatments or solutions for addressing sudden patchy hair loss, commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [9]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query_3 = """[INST]
+What are the effective treatments or solutions for addressing sudden patchy hair loss,
+commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?
+[/INST]"""
+
+answer_3 = response(query_3, max_tokens=512)
+print(answer_3)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> Sudden patchy hair loss, also known as alopecia areata, is an autoimmune condition that causes hair loss in small patches on the scalp or other areas of the body. There is currently no cure for alopecia areata, but there are several treatments that can help promote hair regrowth and potentially prevent further hair loss. Here are some effective treatments:
+1. Topical corticosteroids: These are anti-inflammatory medications that can be applied directly to the affected area to reduce inflammation and promote hair growth. They are usually prescribed in the form of creams, lotions, or solutions.
+2. Injections of corticosteroids: In some cases, corticosteroids may be injected directly into the bald spots to stimulate hair regrowth. This treatment is typically used when topical treatments have not been effective.
+3. Immunotherapy: This involves using medications that alter the immune system's response to help stop the attack on hair follicles. One common immunotherapy medication for alopecia areata is minoxidil.
+4. Hair transplantation: In severe cases of alopecia areata, hair transplantation may be an option to restore hair growth. This involves taking healthy hair from other areas of the scalp or body and transplanting it into the bald spots.
+5. Lifestyle modifications: Certain lifestyle factors can contribute to hair loss, such as stress, poor nutrition, and certain medications. Making lifestyle modifications, such as reducing stress, eating a balanced diet, and avoiding medications that cause hair loss, may help improve hair health and prevent further hair loss.
+As for the possible causes of sudden patchy hair loss, it is believed to be an autoimmune condition where the body's immune system attacks the hair follicles, leading to hair loss. Other potential causes include stress, genetics, vitamin deficiencies, and certain medications. It is important to consult with a healthcare professional for an accurate diagnosis and treatment plan.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 4:  What treatments are recommended for a person who has sustained a physical injury to brain tissue, resulting in temporary or permanent impairment of brain function?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query_4 = """[INST]
+What treatments are recommended for a person who has sustained a physical injury to brain tissue,
+resulting in temporary or permanent impairment of brain function?
+[/INST]"""
+
+answer_4 = response(query_4, max_tokens=512)
+print(answer_4)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> I cannot provide specific treatment recommendations without knowing the exact nature and severity of the brain injury. However, I can share some common treatments and therapies that are often used to help individuals recover from brain injuries:
+1. Medical Management: This may include surgery to remove hematomas or other clots, administering medications to manage symptoms such as seizures, infections, or swelling in the brain.
+2. Rehabilitation Therapies: These therapies are designed to help individuals regain lost skills and improve function. Some common therapies include:
+- Physical therapy: To help individuals regain strength, balance, and mobility.
+- Occupational therapy: To help individuals learn or re-learn daily living skills such as dressing, cooking, and using utensils.
+- Speech-language therapy: To help individuals improve communication skills, including speaking, reading, and writing.
+- Cognitive therapy: To help individuals improve memory, attention, problem-solving, and other cognitive functions.
+3. Supportive Care: This may include assistive devices such as wheelchairs or braces, modifications to the home environment, and counseling to help individuals and their families cope with the emotional and psychological challenges of brain injury.
+4. Lifestyle Modifications: Depending on the severity and type of brain injury, individuals may need to make lifestyle modifications to promote recovery and reduce the risk of further injury. This may include getting enough rest, eating a healthy diet, avoiding alcohol and drugs, and engaging in regular physical activity.
+It's important to note that every brain injury is unique, and treatment plans will vary depending on the individual's specific needs and circumstances. If you or someone you know has sustained a brain injury, it's essential to seek medical attention as soon as possible to ensure proper diagnosis and treatment.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 5: What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip, and what should be considered for their care and recovery?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [11]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>query_5 = """[INST]
+What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip,
+and what should be considered for their care and recovery?
+[/INST]"""
+
+answer_5 = response(query_5, max_tokens=512)
+print(answer_5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> If a person has fractured their leg during a hiking trip, it is important that they receive proper medical attention as soon as possible. Here are some necessary precautions and treatment steps:
+1. Assess the severity of the injury: Check the area for signs of open wounds, swelling, bruising, or deformity. If there is significant pain, swelling, or inability to move the leg, it is likely that the fracture is severe and requires immediate medical attention.
+2. Provide first aid: If the person's condition allows, provide first aid by immobilizing the leg with a splint or sling. Use a makeshift splint made of sticks, branches, or other materials if necessary. Do not attempt to realign the bone or move it into position.
+3. Call for help: If the person is unable to walk or move on their own, call for emergency medical assistance. Provide the location and details of the injury to the rescue team.
+4. Keep the person warm and comfortable: While waiting for help, keep the person as warm and comfortable as possible. Cover them with a blanket or insulating material if it is cold outside.
+5. Monitor vital signs: Check the person's pulse, breathing rate, and level of consciousness regularly. If their condition worsens or they become unresponsive, provide CPR if trained to do so.
+6. Transportation: Once medical help arrives, the person will likely be transported to a hospital for further evaluation and treatment. The fracture may require surgery, casting, or other forms of immobilization.
+7. Recovery: After the initial treatment, the person will need to follow a rehabilitation program to regain strength and mobility in their leg. This may include physical therapy, exercises, and assistive devices such as crutches or a walker. It is important for the person to follow their doctor's instructions carefully to ensure a full recovery.
+8. Prevention: To prevent similar injuries in the future, consider taking the following precautions: wear appropriate hiking shoes with good traction, use trekking poles for added stability, stay on marked trails, and avoid hiking alone if possible.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observations from Direct LLM Responses</h3><br><br>The direct LLM responses provide useful general medical answers for all five questions. The model gives structured information about sepsis management, appendicitis, patchy hair loss, traumatic brain injury, and leg fracture care.<br><br>However, these answers are generated only from the model's internal knowledge. At this stage, the model has not used the Merck Manuals PDF, so the responses are not grounded in the provided medical reference material. This creates a risk of generic, incomplete, or unsupported answers.<br><br>For example, the response on sepsis gives many relevant steps such as early recognition, antibiotics, fluid resuscitation, source control, and monitoring, but it does not cite or retrieve information from the manual. The appendicitis answer is clear and clinically useful, but it is still not backed by retrieved context. The patchy hair loss answer is mostly useful, but some details may need verification against the medical manual. This shows why RAG is necessary: retrieval can provide more reliable and source-grounded answers.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Question Answering using LLM with Prompt Engineering</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [5]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Helper Function
+
+def medical_prompt(question):
+    return f"""[INST]
+You are a careful medical assistant for an educational healthcare prototype.
+
+Answer the question in a clear and structured way using the following format:
+
+1. Brief explanation of the condition or problem
+2. Common symptoms or clinical signs
+3. Recommended treatment or management steps
+4. Important precautions or warning signs
+5. When urgent medical care is needed
+
+Keep the answer factual, concise, and suitable for healthcare decision-support education.
+
+Question:
+{question}
+[/INST]"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 1: What is the protocol for managing sepsis in a critical care unit?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [6]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Combination 1
+question_1 = "What is the protocol for managing sepsis in a critical care unit?"
+
+answer_pe_1 = response(
+    medical_prompt(question_1),
+    max_tokens=700,
+    temperature=0.0,
+    top_p=0.95,
+    top_k=50
+)
+
+print(answer_pe_1)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> 1. Sepsis is a life-threatening condition caused by the body's response to an infection, which can damage various organs and lead to tissue damage and organ failure. It is often characterized by a severe inflammatory response to an infection.
+2. Common symptoms or clinical signs of sepsis include: fever or hypothermia, rapid heart rate, rapid breathing, confusion or altered mental status, low blood pressure, and decreased urine output. In severe cases, septic shock can occur, which is characterized by profound circulatory, cellular, and metabolic abnormalities.
+3. Recommended treatment or management steps for sepsis in a critical care unit include:
+   - Early recognition and prompt initiation of appropriate antibiotics to treat the underlying infection.
+   - Fluid resuscitation to maintain adequate blood pressure and organ perfusion.
+   - Administration of vasopressors if necessary to maintain blood pressure.
+   - Use of corticosteroids, such as hydrocortisone, in cases of septic shock.
+   - Close monitoring of vital signs, laboratory values, and organ function.
+4. Important precautions or warning signs include:
+   - Monitoring for worsening symptoms or new complications, such as respiratory failure or cardiac dysfunction.
+   - Careful monitoring of fluid balance to avoid overload or under-resuscitation.
+   - Close attention to electrolyte levels and acid-base balance.
+5. Urgent medical care is needed if the patient exhibits signs of severe sepsis or septic shock, such as:
+   - Hypotension that does not respond to fluid resuscitation.
+   - Altered mental status or confusion.
+   - Respiratory distress or acute respiratory failure.
+   - Signs of organ dysfunction, such as decreased urine output or altered liver function tests.
+   - Severe pain or disproportionate response to a known infection.
+
+It is important to note that sepsis management requires a multidisciplinary approach and close collaboration between healthcare professionals, including critical care specialists, infectious disease experts, and pharmacists. Early recognition and prompt intervention are key to improving outcomes for patients with sepsis.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 2: What are the common symptoms for appendicitis, and can it be cured via medicine? If not, what surgical procedure should be followed to treat it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Combination 2
+question_2 = """What are the common symptoms of appendicitis, and can it be cured via medicine?
+If not, what surgical procedure should be followed to treat it?"""
+
+answer_pe_2 = response(
+    medical_prompt(question_2),
+    max_tokens=700,
+    temperature=0.2,
+    top_p=0.90,
+    top_k=40
+)
+
+print(answer_pe_2)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> 1. Appendicitis is a inflammatory condition of the appendix, a small tube-shaped organ located in the lower right side of the abdomen. The most common cause is a blockage in the appendix, usually by fecal matter or lymphatic fluid.
+2. Common symptoms of appendicitis include:
+   - Sudden onset of pain in the lower right abdomen, often starting as a dull ache and gradually developing into sharp, constant pain.
+   - Loss of appetite and feeling sick to your stomach (nausea).
+   - Vomiting and diarrhea or constipation.
+   - Fever and chills.
+   - Abdominal swelling and tenderness.
+3. Appendicitis cannot be cured with medicine alone as the inflammation can progress to rupture, leading to peritonitis – a serious infection of the abdominal cavity. Once diagnosed, appendectomy, a surgical procedure to remove the appendix, is the recommended treatment.
+4. Important precautions: Do not delay seeking medical care if you suspect appendicitis as a ruptured appendix can lead to severe complications. Inform your healthcare provider about any previous surgeries or allergies before undergoing an appendectomy.
+5. Urgent medical care is needed if you experience sudden onset of abdominal pain, especially in the lower right side, accompanied by fever, loss of appetite, and vomiting. Seek immediate medical attention as appendicitis can be life-threatening if left untreated.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 3: What are the effective treatments or solutions for addressing sudden patchy hair loss, commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Combination 3
+question_3 = """What are the effective treatments or solutions for addressing sudden patchy hair loss,
+commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?"""
+
+answer_pe_3 = response(
+    medical_prompt(question_3),
+    max_tokens=900,
+    temperature=0.0,
+    top_p=0.95,
+    top_k=50
+)
+
+print(answer_pe_3)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> 1. Sudden patchy hair loss, also known as alopecia areata, is a common autoimmune disorder that results in the sudden appearance of smooth, round, or patchy bald spots on the scalp. The exact cause of alopecia areata is unknown, but it's believed to be related to an abnormal immune response that attacks hair follicles.
+2. Common symptoms include:
+   - Sudden hair loss in small, circular patches, often appearing suddenly and affecting both men and women equally.
+   - Hair may appear thin or fine around the bald spots.
+   - In some cases, complete hair loss can occur, leading to total baldness (alopecia totalis).
+3. Recommended treatments or management steps include:
+   - Topical corticosteroids: These medications are applied directly to the affected area to reduce inflammation and promote hair regrowth.
+   - Injections of corticosteroids: For larger bald patches, injections may be used to deliver the medication deeper into the skin.
+   - Minoxidil (Rogaine): A topical medication that can help slow down hair loss and promote new growth.
+   - DHT blockers: Finasteride or dutasteride may be prescribed to inhibit the production of dihydrotestosterone, a hormone that contributes to hair loss.
+   - Immunotherapy: Injections of certain substances can help stimulate the immune system and promote hair regrowth.
+4. Important precautions or warning signs include:
+   - Monitoring for progression: If the bald patches continue to grow, or if new patches appear, it's important to seek medical attention as soon as possible.
+   - Emotional support: Sudden hair loss can be distressing and may affect self-confidence; seeking emotional support from friends, family, or mental health professionals can help.
+5. When urgent medical care is needed: If you experience sudden, severe hair loss that covers more than 50% of your scalp, or if you notice other symptoms such as fever, weight loss, or extreme fatigue, it's important to seek medical attention right away. These symptoms could indicate an underlying health condition that requires immediate treatment.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 4:  What treatments are recommended for a person who has sustained a physical injury to brain tissue, resulting in temporary or permanent impairment of brain function?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [9]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Combination 4
+question_4 = """What treatments are recommended for a person who has sustained a physical injury to brain tissue,
+resulting in temporary or permanent impairment of brain function?"""
+
+answer_pe_4 = response(
+    medical_prompt(question_4),
+    max_tokens=900,
+    temperature=0.3,
+    top_p=0.85,
+    top_k=40
+)
+
+print(answer_pe_4)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> 1. Brain injury refers to damage to the brain tissue due to trauma, which can result in temporary or permanent impairment of brain function. Brain injuries can range from mild concussions to severe traumatic brain injuries (TBIs).
+2. Common symptoms of a brain injury include headache, dizziness, confusion, memory loss, difficulty speaking or understanding speech, and changes in mood or behavior. Severe brain injuries may cause seizures, loss of consciousness, or paralysis.
+3. The recommended treatment for a brain injury depends on the severity of the injury. Mild brain injuries usually heal on their own with rest and time. However, more severe injuries may require hospitalization, surgery, and rehabilitation. Rehabilitation may include physical therapy, occupational therapy, speech therapy, and cognitive rehabilitation to help individuals regain lost skills and improve overall function.
+4. Important precautions for individuals with brain injuries include avoiding activities that could cause further injury, such as contact sports or heavy lifting. They should also avoid alcohol and drugs, which can worsen brain damage. Individuals with brain injuries may need to take medications to manage symptoms, such as pain, seizures, or depression.
+5. Warning signs of a worsening brain injury include increasing confusion, worsening headache, seizures, loss of consciousness, and changes in vital signs, such as heart rate or breathing. If an individual with a brain injury experiences any of these symptoms, they should seek urgent medical care immediately.
+6. Urgent medical care is needed for individuals with severe brain injuries, including those who have lost consciousness, have difficulty breathing, or are experiencing seizures. These individuals may require emergency surgery to relieve pressure on the brain or stabilize their condition. They will likely need hospitalization and intensive rehabilitation to regain lost function.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 5: What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip, and what should be considered for their care and recovery?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Combination 5
+question_5 = """What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip,
+and what should be considered for their care and recovery?"""
+
+answer_pe_5 = response(
+    medical_prompt(question_5),
+    max_tokens=1000,
+    temperature=0.1,
+    top_p=0.90,
+    top_k=30
+)
+
+print(answer_pe_5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream"> 1. A fractured leg is a broken bone in the lower limb, often caused by falls or traumatic injuries, such as those that can occur during hiking.
+2. Common symptoms include pain, swelling, bruising, deformity, difficulty walking, and inability to bear weight on the affected leg.
+3. Recommended treatment steps:
+   a. Immediate first aid: Apply a sterile dressing to the wound, if present, and immobilize the leg using a splint or sling.
+   b. Seek medical attention as soon as possible. X-rays will be needed to confirm the fracture and determine the type and severity.
+   c. Depending on the fracture's location and severity, treatment may include casting, surgery, or traction.
+   d. Rest, ice, compression, and elevation (RICE) can help manage symptoms and promote healing.
+3. Important precautions or warning signs:
+   a. Avoid putting weight on the affected leg until it has healed.
+   b. Follow your healthcare provider's instructions regarding medication use, physical therapy, and activity restrictions.
+   c. Watch for signs of infection, such as increased pain, redness, swelling, or warmth around the injury.
+4. When urgent medical care is needed:
+   a. If you suspect a fracture but cannot get to medical help right away, try to immobilize the leg as best as possible and seek medical attention as soon as possible.
+   b. Call emergency services if there are signs of severe injury, such as excessive bleeding, inability to move, or signs of shock (pale skin, rapid heartbeat, shallow breathing).
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observations from LLM Responses with Prompt Engineering</h3><br><br>Prompt engineering improved the structure, clarity, and completeness of the responses compared with the direct LLM answers. The helper prompt forced the model to answer in a fixed medical format: explanation, symptoms or clinical signs, treatment steps, precautions, and urgent-care situations. This made the outputs easier to read and more useful for a healthcare decision-support prototype.<br><br>The different parameter combinations also affected the answers. Lower temperature values, such as <code>temperature=0.0</code> and <code>temperature=0.1</code>, produced more stable and factual responses. Higher <code>max_tokens</code> values helped the model produce more complete answers without cutting off important details. The sepsis, appendicitis, brain injury, and leg fracture responses were more organized than the baseline answers.<br><br>However, the model still has some limitations. The answers are generated from the model's internal knowledge and are not yet grounded in the Merck Manuals dataset. Because of this, some details may need verification. For example, the patchy hair loss response includes possible treatments such as corticosteroids and minoxidil, but these should be checked against the retrieved medical manual context in the RAG section. Also, some formatting issues remain, such as repeated numbering in the fracture response and an extra sixth point in the brain injury response.<br><br>Overall, prompt engineering improved response quality, but it does not fully solve the problem of medical reliability. The next step is to use Retrieval-Augmented Generation so that the model can retrieve relevant chunks from the Merck Manuals PDF and generate answers based on the provided medical reference material.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Data Preparation for RAG</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [12]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>#Mounting google drive
+from google.colab import drive
+drive.mount('/content/drive')
+</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Mounted at /content/drive
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Loading the Data</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [24]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Loading the Merck Manual PDF
+
+pdf_path = "/content/drive/MyDrive/#Project/medical_diagnosis_manual.pdf"
+
+loader = PyMuPDFLoader(pdf_path)
+documents = loader.load()
+
+print("PDF loaded successfully.")
+print("Number of pages loaded:", len(documents))
+print("Metadata of first page:")
+print(documents[0].metadata)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">PDF loaded successfully.
+Number of pages loaded: 4114
+Metadata of first page:
+{'producer': 'pdf-lib (https://github.com/Hopding/pdf-lib)', 'creator': 'Atop CHM to PDF Converter', 'creationdate': '2012-06-15T05:44:40+00:00', 'source': '/content/drive/MyDrive/#Project/medical_diagnosis_manual.pdf', 'file_path': '/content/drive/MyDrive/#Project/medical_diagnosis_manual.pdf', 'total_pages': 4114, 'format': 'PDF 1.7', 'title': 'The Merck Manual of Diagnosis &amp; Therapy, 19th Edition', 'author': '', 'subject': '', 'keywords': '', 'moddate': '2026-06-28T01:37:53+00:00', 'trapped': '', 'modDate': 'D:20260628013753Z', 'creationDate': 'D:20120615054440Z', 'page': 0}
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Data Overview</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">#### Checking the first 5 pages</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [25]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Checking first few pages
+
+for i in range(5):
+    print(f"\n\n========== Page {i+1} ==========\n")
+    print(documents[i].page_content[:1000])</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">
+
+========== Page 1 ==========
+
+das.animesh1603@gmail.com
+XQJEMIPUFW
+This file is meant for personal use by das.animesh1603@gmail.com only.
+Sharing or publishing the contents in part or full is liable for legal action.
+
+
+========== Page 2 ==========
+
+das.animesh1603@gmail.com
+XQJEMIPUFW
+This file is meant for personal use by das.animesh1603@gmail.com only.
+Sharing or publishing the contents in part or full is liable for legal action.
+
+
+========== Page 3 ==========
+
+Table of Contents
+1
+Front    ................................................................................................................................................................................................................
+1
+Cover    .......................................................................................................................................................................................................
+2
+Front Matter    ...........................................................................................................................................................................................
+53
+1 - Nutritional Disorders    ...............................................................................................................................................................
+53
+Chapter 1. Nutrition: General Considerations    ......................................................................................................
+
+
+========== Page 4 ==========
+
+491
+Chapter 44. Foot &amp; Ankle Disorders    .....................................................................................................................................
+502
+Chapter 45. Tumors of Bones &amp; Joints    ...............................................................................................................................
+510
+5 - Ear, Nose, Throat &amp; Dental Disorders    ..................................................................................................................
+510
+Chapter 46. Approach to the Patient With Ear Problems    ...........................................................................................
+523
+Chapter 47. Hearing Loss    .........................................................................................................................................................
+535
+Chapter 48. Inner Ear Disorders    ...............................................................................................................
+
+
+========== Page 5 ==========
+
+921
+Chapter 94. Adrenal Disorders    ................................................................................................................................................
+936
+Chapter 95. Polyglandular Deficiency Syndromes    ........................................................................................................
+939
+Chapter 96. Porphyrias    ..............................................................................................................................................................
+949
+Chapter 97. Fluid &amp; Electrolyte Metabolism    .....................................................................................................................
+987
+Chapter 98. Acid-Base Regulation &amp; Disorders    ..............................................................................................................
+1001
+Chapter 99. Diabetes Mellitus &amp; Disorders of Carbohydrate Metabolism    ........................................................
+1024
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">#### Checking the number of pages</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [26]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Checking total number of pages
+
+print("Total number of pages in the document:", len(documents))</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Total number of pages in the document: 4114
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation</h3><br><br>The PDF was loaded successfully. The document contains more than 4,000 pages, which matches the project description. Some initial pages contain table of contents or watermark text rather than useful medical content. Therefore, before creating chunks for RAG, basic text cleaning is useful to remove unnecessary repeated text and very short pages.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Cleaning the Loaded Pages</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [27]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Cleaning the loaded document pages
+
+def clean_text(text):
+    """
+    Cleans repeated watermark/personal-use text and extra whitespace.
+    This keeps the medical content but removes noisy repeated lines.
+    """
+    unwanted_phrases = [
+        "This file is meant for personal use",
+        "Sharing or publishing the contents",
+        "liable for legal action"
+    ]
+
+    lines = text.split("\n")
+    cleaned_lines = []
+
+    for line in lines:
+        line = line.strip()
+
+        # Remove empty lines
+        if not line:
+            continue
+
+        # Remove repeated watermark/personal-use lines
+        if any(phrase in line for phrase in unwanted_phrases):
+            continue
+
+        cleaned_lines.append(line)
+
+    return "\n".join(cleaned_lines)
+
+
+cleaned_documents = []
+
+for doc in documents:
+    cleaned_content = clean_text(doc.page_content)
+
+    # Keep only pages with meaningful text
+    if len(cleaned_content) &gt; 100:
+        doc.page_content = cleaned_content
+        cleaned_documents.append(doc)
+
+print("Original number of pages:", len(documents))
+print("Number of pages after cleaning/filtering:", len(cleaned_documents))
+print("\nSample cleaned page:\n")
+print(cleaned_documents[0].page_content[:1000])</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Original number of pages: 4114
+Number of pages after cleaning/filtering: 4111
+
+Sample cleaned page:
+
+Table of Contents
+1
+Front    ................................................................................................................................................................................................................
+1
+Cover    .......................................................................................................................................................................................................
+2
+Front Matter    ...........................................................................................................................................................................................
+53
+1 - Nutritional Disorders    ...............................................................................................................................................................
+53
+Chapter 1. Nutrition: General Considerations    ......................................................................................................
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Data Chunking</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [60]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Splitting the cleaned documents into chunks
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200,
+    separators=["\n\n", "\n", ". ", " ", ""]
+)
+
+document_chunks = text_splitter.split_documents(cleaned_documents)
+
+print("Total cleaned pages:", len(cleaned_documents))
+print("Total chunks created:", len(document_chunks))
+
+print("\nSample chunk content:\n")
+print(document_chunks[0].page_content[:1000])
+
+print("\nSample chunk metadata:\n")
+print(document_chunks[0].metadata)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Total cleaned pages: 4111
+Total chunks created: 17219
+
+Sample chunk content:
+
+Table of Contents
+1
+Front    ................................................................................................................................................................................................................
+1
+Cover    .......................................................................................................................................................................................................
+2
+Front Matter    ...........................................................................................................................................................................................
+53
+1 - Nutritional Disorders    ...............................................................................................................................................................
+53
+
+Sample chunk metadata:
+
+{'producer': 'pdf-lib (https://github.com/Hopding/pdf-lib)', 'creator': 'Atop CHM to PDF Converter', 'creationdate': '2012-06-15T05:44:40+00:00', 'source': '/content/drive/MyDrive/#Project/medical_diagnosis_manual.pdf', 'file_path': '/content/drive/MyDrive/#Project/medical_diagnosis_manual.pdf', 'total_pages': 4114, 'format': 'PDF 1.7', 'title': 'The Merck Manual of Diagnosis &amp; Therapy, 19th Edition', 'author': '', 'subject': '', 'keywords': '', 'moddate': '2026-06-28T01:37:53+00:00', 'trapped': '', 'modDate': 'D:20260628013753Z', 'creationDate': 'D:20120615054440Z', 'page': 2}
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation</h3><br><br>The cleaned medical manual was split into smaller overlapping chunks. A chunk size of 1000 characters with 200 characters overlap is suitable for this RAG prototype because it keeps each chunk focused while preserving nearby context. The overlap helps avoid losing important medical details that may appear at chunk boundaries.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Embedding</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [29]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Loading the embedding model
+
+embedding_model = SentenceTransformerEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+print("Embedding model loaded successfully.")</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Embedding model loaded successfully.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Vector Database</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [31]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Creating the Chroma vector database in batches
+
+import os
+import shutil
+import gc
+from tqdm.auto import tqdm
+import chromadb
+
+persist_directory = "/content/chroma_merck_manual_db"
+
+# Remove old database if rerunning the notebook
+if os.path.exists(persist_directory):
+    shutil.rmtree(persist_directory)
+
+# Ensure the directory exists and is writable
+os.makedirs(persist_directory, exist_ok=True)
+
+# Initialize a persistent client from chromadb directly
+client_settings = chromadb.config.Settings(
+    persist_directory=persist_directory,
+)
+chroma_client = chromadb.PersistentClient(settings=client_settings)
+
+# Now pass this client to LangChain's Chroma
+vectordb = Chroma(
+    client=chroma_client, # Pass the pre-initialized client
+    collection_name="merck_manual_rag",
+    embedding_function=embedding_model
+)
+
+batch_size = 500
+
+for i in tqdm(range(0, len(document_chunks), batch_size)):
+    batch = document_chunks[i:i + batch_size]
+
+    # Stable unique IDs help avoid duplicate-ID issues on reruns
+    ids = [f"chunk_{j}" for j in range(i, i + len(batch))]
+
+    vectordb.add_documents(batch, ids=ids)
+    gc.collect()
+
+print("Vector database created successfully.")
+print("Total chunks stored:", vectordb._collection.count())</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-result"><pre>  0%|          | 0/35 [00:00&lt;?, ?it/s]</pre></div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Vector database created successfully.
+Total chunks stored: 17219
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Retriever</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [32]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Creating the retriever
+
+retriever = vectordb.as_retriever(
+    search_type="similarity",
+    search_kwargs={"k": 3}
+)
+
+print("Retriever created successfully.")</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Retriever created successfully.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [33]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Testing the retriever with one project question
+
+test_query = "What is the protocol for managing sepsis in a critical care unit?"
+
+retrieved_docs = retriever.get_relevant_documents(test_query)
+
+print("Number of retrieved chunks:", len(retrieved_docs))
+
+for i, doc in enumerate(retrieved_docs, start=1):
+    print(f"\n\n========== Retrieved Chunk {i} ==========")
+    print("Page:", doc.metadata.get("page"))
+    print(doc.page_content[:1000])</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Number of retrieved chunks: 3
+
+
+========== Retrieved Chunk 1 ==========
+Page: 2400
+16 - Critical Care Medicine
+Chapter 222. Approach to the Critically Ill Patient
+Introduction
+Critical care medicine specializes in caring for the most seriously ill patients. These patients are best
+treated in an ICU staffed by experienced personnel. Some hospitals maintain separate units for special
+populations (eg, cardiac, surgical, neurologic, pediatric, or neonatal patients). ICUs have a high
+nurse:patient ratio to provide the necessary high intensity of service, including treatment and monitoring
+of physiologic parameters.
+Supportive care for the ICU patient includes provision of adequate nutrition (see p. 21) and prevention of
+infection, stress ulcers and gastritis (see p. 131), and pulmonary embolism (see p. 1920). Because 15 to
+25% of patients admitted to ICUs die there, physicians should know how to minimize suffering and help
+dying patients maintain dignity (see p. 3480).
+Patient Monitoring and Testing
+
+
+========== Retrieved Chunk 2 ==========
+Page: 2448
+septic shock is high (60 to 65%). Prognosis depends on the cause, preexisting or complicating illness,
+time between onset and diagnosis, and promptness and adequacy of therapy.
+General management: First aid involves keeping the patient warm. Hemorrhage is controlled, airway
+and ventilation are checked, and respiratory assistance is given if necessary. Nothing is given by mouth,
+and the patient's head is turned to one side to avoid aspiration if emesis occurs.
+Treatment begins simultaneously with evaluation. Supplemental O2 by face mask is provided. If shock is
+severe or if ventilation is inadequate, airway intubation with mechanical ventilation is necessary. Two
+large (16- to 18-gauge) IV catheters are inserted into separate peripheral veins. A central venous line or
+an intraosseous needle, especially in children, provides an alternative when peripheral veins cannot
+promptly be accessed (see also p. 2250).
+
+
+========== Retrieved Chunk 3 ==========
+Page: 2453
+Chapter 227. Sepsis and Septic Shock
+Introduction
+(See also Ch. 226.)
+Sepsis, severe sepsis, and septic shock are inflammatory states resulting from the systemic
+response to bacterial infection. In severe sepsis and septic shock, there is critical reduction in
+tissue perfusion. Common causes include gram-negative organisms, staphylococci, and
+meningococci. Symptoms often begin with shaking chills and include fever, hypotension,
+oliguria, and confusion. Acute failure of multiple organs, including the lungs, kidneys, and liver,
+can occur. Treatment is aggressive fluid resuscitation, antibiotics, surgical excision of infected
+or necrotic tissues and drainage of pus, supportive care, and sometimes intensive control of
+blood glucose and administration of corticosteroids and activated protein C.
+A spectrum of severity exists (see
+Table 227-1).
+Sepsis is infection accompanied by an acute inflammatory reaction with systemic manifestations
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation</h3><br><br>The retriever returns the top 3 chunks most relevant to the sepsis question. The retrieved chunks include critical care and sepsis-related content, showing that the vector database and retriever are working correctly. These retrieved chunks will be passed as context to the LLM in the RAG response function.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>System and User Prompt Template</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [34]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># System and User Prompt Template
+
+qna_system_message = """
+You are a careful medical question-answering assistant for an educational healthcare prototype.
+
+Use only the provided medical manual context to answer the question.
+Do not use unsupported outside information.
+If the context does not contain enough information, clearly say that the retrieved context is insufficient.
+
+Keep the answer:
+- factual
+- clear
+- medically cautious
+- structured
+- suitable for healthcare decision-support education
+
+Do not present the response as a personal diagnosis.
+Recommend professional medical care when the situation is urgent or serious.
+"""
+
+qna_user_message_template = """
+Context from the medical manual:
+{context}
+
+Question:
+{question}
+
+Answer the question using the following structure:
+
+1. Brief answer
+2. Key symptoms or clinical signs
+3. Recommended treatment or management steps
+4. Important precautions
+5. When urgent medical care is needed
+
+Also mention the retrieved page numbers used as source context.
+
+Answer:
+"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Response Function</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [35]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def generate_rag_response(
+    user_input,
+    k=3,
+    max_tokens=700,
+    temperature=0,
+    top_p=0.95,
+    top_k=50
+):
+    """
+    Generates a RAG-based answer by:
+    1. Retrieving relevant chunks from the vector database
+    2. Creating a context from retrieved chunks
+    3. Passing context + question to the LLM
+    4. Returning the generated answer
+    """
+
+    global qna_system_message, qna_user_message_template, vectordb, llm
+
+    try:
+        # Create retriever dynamically so k can be tuned during experiments
+        current_retriever = vectordb.as_retriever(
+            search_type="similarity",
+            search_kwargs={"k": k}
+        )
+
+        # Retrieve relevant document chunks
+        relevant_document_chunks = current_retriever.get_relevant_documents(user_input)
+
+        # Prepare context with page numbers
+        context_list = []
+        source_pages = []
+
+        for i, doc in enumerate(relevant_document_chunks, start=1):
+            page_number = doc.metadata.get("page", "Unknown")
+
+            # PyMuPDF page index starts from 0, so add 1 for human-readable page number
+            if isinstance(page_number, int):
+                display_page = page_number + 1
+            else:
+                display_page = page_number
+
+            source_pages.append(display_page)
+
+            context_list.append(
+                f"Source chunk {i} | Page: {display_page}\n{doc.page_content}"
+            )
+
+        context_for_query = "\n\n".join(context_list)
+
+        # Build user message
+        user_message = qna_user_message_template.format(
+            context=context_for_query,
+            question=user_input
+        )
+
+        # Final Mistral-style prompt
+        prompt = f"""[INST]
+{qna_system_message}
+
+{user_message}
+[/INST]"""
+
+        # Generate response
+        model_output = llm(
+            prompt=prompt,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            top_p=top_p,
+            top_k=top_k,
+            stop=["&lt;/s&gt;"]
+        )
+
+        answer = model_output["choices"][0]["text"].strip()
+
+        return answer
+
+    except Exception as e:
+        return f"Sorry, I encountered the following error:\n{e}"</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [36]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>test_question = "What is the protocol for managing sepsis in a critical care unit?"
+
+test_answer = generate_rag_response(
+    test_question,
+    k=3,
+    max_tokens=700,
+    temperature=0,
+    top_p=0.95,
+    top_k=50
+)
+
+print(test_answer)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: Sepsis, a serious inflammatory condition caused by bacterial infection, requires aggressive management in critical care units. (Source: p. 2454)
+
+2. Key symptoms or clinical signs: Shaking chills, fever, hypotension, oliguria, and confusion are common symptoms of sepsis. Severe cases can lead to acute organ failure. (Source: p. 2454)
+
+3. Recommended treatment or management steps: Keep the patient warm, control hemorrhage, secure airway and ventilate if necessary, provide supplemental oxygen, insert large IV catheters, and consider central venous lines or intraosseous needles for access. Initiate antibiotics, fluid resuscitation, surgical intervention, supportive care, and intensive control of blood glucose as needed. (Sources: p. 2449-2450)
+
+4. Important precautions: Nothing should be given by mouth, and the patient's head should be turned to prevent aspiration if emesis occurs. (Source: p. 2449)
+
+5. When urgent medical care is needed: Severe sepsis or septic shock necessitates immediate hospitalization in a critical care unit for intensive management. (Sources: p. 2449, 2454)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Question Answering using RAG</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [37]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Final RAG configuration for answering the project questions
+
+final_rag_config = {
+    "k": 4,
+    "max_tokens": 900,
+    "temperature": 0.0,
+    "top_p": 0.95,
+    "top_k": 50
+}</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 1: What is the protocol for managing sepsis in a critical care unit?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [38]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Answer - Question 1
+
+question_1_rag = "What is the protocol for managing sepsis in a critical care unit?"
+
+answer_rag_1 = generate_rag_response(
+    user_input=question_1_rag,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print(answer_rag_1)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: Sepsis, a serious inflammatory condition caused by bacterial infection, requires aggressive management in critical care units. The protocol includes maintaining patient warmth, controlling hemorrhage, securing the airway, providing oxygen support, and initiating fluid resuscitation, antibiotics, and supportive care (Source chunks: 2401, 2454).
+
+2. Key symptoms or clinical signs: Sepsis is characterized by fever, hypotension, oliguria, confusion, and acute organ failure (Source chunk: 2454). Severe sepsis presents with signs of organ failure, such as cardiovascular failure (hypotension), respiratory failure (hypoxemia), renal failure (oliguria), and hematologic failure (coagulopathy) (Source chunk: 2454).
+
+3. Recommended treatment or management steps: First aid includes keeping the patient warm, controlling hemorrhage, securing the airway, and providing oxygen support. Treatment involves aggressive fluid resuscitation, antibiotics, surgical excision of infected tissues, drainage of pus, supportive care, and sometimes intensive control of blood glucose and administration of corticosteroids and activated protein C (Source chunk: 2454).
+
+4. Important precautions: Nothing should be given by mouth, and the patient's head should be turned to one side if emesis occurs to avoid aspiration (Source chunk: 2449).
+
+5. When urgent medical care is needed: Given the high mortality rate of sepsis in ICUs, prompt recognition and aggressive management are crucial. Severe symptoms or signs of organ failure warrant immediate consultation with a healthcare professional or transfer to an ICU for specialized care (Source chunk: 2401).
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 2: What are the common symptoms for appendicitis, and can it be cured via medicine? If not, what surgical procedure should be followed to treat it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [39]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Answer - Question 2
+
+question_2_rag = """What are the common symptoms of appendicitis, and can it be cured via medicine?
+If not, what surgical procedure should be followed to treat it?"""
+
+answer_rag_2 = generate_rag_response(
+    user_input=question_2_rag,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print(answer_rag_2)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer:
+Appendicitis is an inflammatory condition of the appendix, typically causing abdominal pain, anorexia, and tenderness. It requires surgical removal if diagnosed. In the US, it's the most common cause of acute abdominal pain requiring surgery, affecting around 5% of the population, mostly in the teens and 20s (Source: p. 173-174).
+
+2. Key symptoms or clinical signs:
+The classic symptoms include epigastric or periumbilical pain followed by nausea, vomiting, and anorexia, which later shifts to the right lower quadrant. Pain increases with cough and motion. Direct and rebound tenderness is found at McBurney's point (Source: p. 174).
+
+3. Recommended treatment or management steps:
+If diagnosed early, appendicitis is treated by surgical removal. Before the operation, an NGT is inserted, and patients with signs of volume depletion should have urine output monitored with a catheter. Fluid status is maintained through adequate IV fluid and electrolyte replacement, along with IV antibiotics effective against intestinal flora (Source: p. 174).
+
+4. Important precautions:
+If an abscess or inflammatory mass has formed, the procedure may be limited to drainage of the abscess. Patients should receive adequate preoperative evaluation and proper postoperative care (Source: p. 173-174).
+
+5. When urgent medical care is needed:
+If symptoms persist or worsen, it's crucial to seek professional medical care as appendicitis can lead to complications like necrosis, gangrene, and perforation if left untreated (Source: p. 174).
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 3: What are the effective treatments or solutions for addressing sudden patchy hair loss, commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [40]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Answer - Question 3
+
+question_3_rag = """What are the effective treatments or solutions for addressing sudden patchy hair loss,
+commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?"""
+
+answer_rag_3 = generate_rag_response(
+    user_input=question_3_rag,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print(answer_rag_3)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: Sudden patchy hair loss, also known as alopecia, can be caused by various factors including androgenetic alopecia, drugs (including chemotherapeutic agents), infection, or underlying disorders. Treatment options depend on the underlying cause. Androgenetic alopecia can be treated with minoxidil, which prolongs the anagen growth phase and enlarges miniaturized follicles. For non-scarring alopecia caused by other reasons, treatment involves addressing the underlying condition.
+
+2. Key symptoms or clinical signs: Sudden appearance of localized bald spots on the scalp is a key symptom of patchy hair loss. Other possible signs may include hair thinning, increased shedding, or a visible scalp.
+
+3. Recommended treatment or management steps: For androgenetic alopecia, topical minoxidil (2% for women, 2% or 5% for men) can be applied to the affected area daily. In cases of non-scarring alopecia caused by other reasons, treating the underlying condition is essential. This may include eliminating physical traction or stress, addressing infections with topical or oral antifungals, or managing underlying disorders such as lupus erythematosus, lichen planopilaris, or systemic sclerosis.
+
+4. Important precautions: It is important to note that not all causes of patchy hair loss can be treated with the same methods. Proper diagnosis by a healthcare professional is crucial before starting any treatment. Additionally, some treatments may have side effects and should only be used under medical supervision.
+
+5. When urgent medical care is needed: If sudden patchy hair loss is accompanied by other symptoms such as fever, severe itching, or pain, it is essential to seek urgent medical care. These symptoms could indicate an underlying condition that requires immediate attention. Additionally, if hair loss is extensive or causing significant emotional distress, professional help from a healthcare provider may be necessary.
+
+Retrieved context: Source chunk 1 (p. 859), Source chunk 2 (p. 856), and Source chunk 3 (p. 858) of The Merck Manual of Diagnosis &amp; Therapy, 19th Edition.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 4:  What treatments are recommended for a person who has sustained a physical injury to brain tissue, resulting in temporary or permanent impairment of brain function?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [41]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Answer - Question 4
+
+question_4_rag = """What treatments are recommended for a person who has sustained a physical injury to brain tissue,
+resulting in temporary or permanent impairment of brain function?"""
+
+answer_rag_4 = generate_rag_response(
+    user_input=question_4_rag,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print(answer_rag_4)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: For a person with a brain injury resulting in temporary or permanent impairment of brain function, recommended treatments include supportive care to prevent systemic complications, provide good nutrition, prevent pressure ulcers, and physical therapy to prevent limb contractures (Source chunk 2 &amp; 4, pages 1834, 1843). Early intervention by rehabilitation specialists is crucial for maximal functional recovery (Source chunk 3, page 3648).
+
+2. Key symptoms or clinical signs: The person may experience temporary or permanent loss of cognitive function, communication abilities, and independence (Source chunk 4, page 1843).
+
+3. Recommended treatment or management steps: Supportive care is essential to prevent systemic complications such as pneumonia, UTI, thromboembolic disease. Good nutrition and pressure ulcer prevention are also important. Physical therapy is necessary to prevent limb contractures. Early evaluation by rehabilitation specialists is crucial for establishing baseline findings and prioritizing treatment (Source chunk 2 &amp; 3, pages 1834, 3648).
+
+4. Important precautions: Monitor the person closely for signs of systemic complications, such as infections or thromboembolic disease. Ensure they receive proper nutrition and pressure ulcer prevention care (Source chunk 2, page 1844).
+
+5. When urgent medical care is needed: If the person shows signs of worsening condition, sudden death, or severe complications such as pulmonary infection, UTI, or multiple organ failure, seek urgent medical care immediately (Source chunk 4, page 1843).
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 5: What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip, and what should be considered for their care and recovery?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [42]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Answer - Question 5
+
+question_5_rag = """What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip,
+and what should be considered for their care and recovery?"""
+
+answer_rag_5 = generate_rag_response(
+    user_input=question_5_rag,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print(answer_rag_5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. A person with a fractured leg from a hiking injury should rest and avoid weight-bearing activities, possibly using crutches to keep weight off the affected limb for several days (Source chunk 1, p. 3387). Treatment includes RICE (rest, ice, compression, and elevation) and immobilization with a splint (Source chunk 4, p. 3391).
+2. Key symptoms or clinical signs include pain, swelling, poor muscle function, and potentially limited mobility in the affected leg (Source chunk 2, p. 3502).
+3. Recommended treatment or management steps include rest, ice, compression, elevation, immobilization with a splint, and possibly crutches for support (Source chunk 1, p. 3387; Source chunk 4, p. 3391). Prescription of NSAIDs and analgesics may be necessary for pain relief (Source chunk 2, p. 3502).
+4. Important precautions include keeping the wound clean and dry, applying nonadherent and impermeable dressings, and inspecting the wound daily or seeking early physician examination for higher risk wounds or unreliable patients (Source chunk 1, p. 3387).
+5. Urgent medical care is needed if there are signs of life-threatening complications such as rapid blood loss, fat embolism, or injuries that disrupt the vascular supply, which may threaten limb viability or cause permanent dysfunction (Source chunk 3, p. 3389). Injuries to arteries and nerves may require surgical repair (Source chunk 4, p. 3391).
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observations from RAG-Based Answers</h3><br><br>The RAG-based system generated answers for all five questions provided in the problem statement. Unlike the direct LLM and prompt-engineered responses, these answers used retrieved context from the Merck Manual, making them more grounded in the provided medical reference material.<br><br>For the sepsis question, the answer identified important clinical signs such as fever, hypotension, oliguria, confusion, and acute organ failure. It also included major treatment steps such as aggressive fluid resuscitation, antibiotics, drainage of pus, surgical removal of infected tissue when needed, and supportive ICU care. However, some retrieved context also included general emergency or shock-related first-aid instructions such as keeping the patient warm and avoiding oral intake. This shows that retrieval quality can affect the final answer.<br><br>For appendicitis, the RAG answer was highly relevant and well grounded. It correctly described classic symptoms such as periumbilical pain shifting to the right lower quadrant, nausea, vomiting, anorexia, pain with motion or coughing, and tenderness at McBurney’s point. It also correctly explained that appendicitis is generally treated surgically through appendectomy, along with IV fluids and antibiotics before surgery.<br><br>For sudden patchy hair loss, the answer gave a useful overview of possible causes and treatment approaches. It mentioned alopecia, drug-related hair loss, infection, and underlying disorders. It also explained that treatment depends on the cause. However, the retrieved context appeared somewhat broad because it included androgenetic alopecia and minoxidil, which may not always be the most specific match for sudden localized patchy bald spots. This indicates that this question may benefit from improved retrieval tuning.<br><br>For brain injury, the RAG answer focused on supportive care, prevention of complications, nutrition, prevention of pressure ulcers, physical therapy, and early rehabilitation. This is useful for recovery and long-term management, although the answer is less focused on immediate emergency management. Still, it provides relevant information for a person with temporary or permanent impairment of brain function after brain tissue injury.<br><br>For leg fracture, the RAG answer was relevant and practical. It covered rest, avoiding weight-bearing, use of crutches, RICE, splinting, wound care, pain relief, and urgent warning signs such as blood loss, fat embolism, vascular injury, nerve injury, and threat to limb viability.<br><br>Overall, the RAG responses are more trustworthy than the earlier non-RAG responses because they are based on retrieved medical manual chunks. The main limitation is that some retrieved chunks are broader than the exact question, so the next step is to fine-tune retriever and LLM parameters to improve relevance, completeness, and answer quality.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Fine-tuning</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [43]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Representative question for RAG parameter tuning
+# This question is selected because the first RAG output retrieved somewhat broad context.
+
+tuning_question = """What are the effective treatments or solutions for addressing sudden patchy hair loss,
+commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [44]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Fine-Tuning - Combination 1: Baseline
+
+tuned_answer_1 = generate_rag_response(
+    user_input=tuning_question,
+    k=4,
+    max_tokens=900,
+    temperature=0.0,
+    top_p=0.95,
+    top_k=50
+)
+
+print(tuned_answer_1)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: Sudden patchy hair loss, also known as alopecia, can be caused by various factors including androgenetic alopecia, drugs (including chemotherapeutic agents), infection, or underlying disorders. Treatment options depend on the underlying cause. Androgenetic alopecia can be treated with minoxidil, which prolongs the anagen growth phase and enlarges miniaturized follicles. For non-scarring alopecia caused by other reasons, treatment involves addressing the underlying condition.
+
+2. Key symptoms or clinical signs: Sudden appearance of localized bald spots on the scalp is a key symptom of patchy hair loss. Other possible signs may include hair thinning, increased shedding, or a visible scalp.
+
+3. Recommended treatment or management steps: For androgenetic alopecia, topical minoxidil (2% for women, 2% or 5% for men) can be applied to the affected area daily. In cases of non-scarring alopecia caused by other reasons, treating the underlying condition is essential. This may include eliminating physical traction or stress, addressing infections with topical or oral antifungals, or managing underlying disorders such as lupus erythematosus, lichen planopilaris, or systemic sclerosis.
+
+4. Important precautions: It is important to note that not all causes of patchy hair loss can be treated with the same methods. Proper diagnosis by a healthcare professional is crucial before starting any treatment. Additionally, some treatments may have side effects and should only be used under medical supervision.
+
+5. When urgent medical care is needed: If sudden patchy hair loss is accompanied by other symptoms such as fever, severe itching, or pain, it is essential to seek urgent medical care. These symptoms could indicate an underlying condition that requires immediate attention. Additionally, if hair loss is extensive or causing significant emotional distress, professional help from a healthcare provider may be necessary.
+
+Retrieved context: Source chunk 1 (p. 859), Source chunk 2 (p. 856), and Source chunk 3 (p. 858) of The Merck Manual of Diagnosis &amp; Therapy, 19th Edition.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [45]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Fine-Tuning - Combination 2: Smaller retrieved context
+
+tuned_answer_2 = generate_rag_response(
+    user_input=tuning_question,
+    k=2,
+    max_tokens=900,
+    temperature=0.0,
+    top_p=0.95,
+    top_k=50
+)
+
+print(tuned_answer_2)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: Sudden patchy hair loss, also known as alopecia areata, can present as localized bald spots on the scalp. The causes of this condition include hyperandrogenemia, underlying disorders, traction, tinea capitis, and trichotillomania. Recommended treatments depend on the underlying cause but may include topical or intralesional corticosteroids, minoxidil, anthralin, immunotherapy, or elimination of physical stress to the scalp (source chunk 1, page 859).
+
+2. Key symptoms or clinical signs: Sudden patchy hair loss is characterized by round or oval bald spots on the scalp that may be accompanied by fine hairs growing from the affected area (exclamation mark hairs) (source chunk 1, page 859).
+
+3. Recommended treatment or management steps: For non-scarring alopecia like alopecia areata, topical corticosteroids, minoxidil, anthralin, or immunotherapy may be recommended to promote hair regrowth (source chunk 1, page 859). In severe cases, systemic corticosteroids might be considered. For underlying disorders causing hair loss, proper treatment of the underlying condition is essential (source chunk 1, page 859).
+
+4. Important precautions: It's crucial to note that some treatments for alopecia areata may have side effects and potential risks. Topical corticosteroids can cause skin thinning, while systemic corticosteroids may lead to various adverse effects such as weight gain, mood swings, and increased risk of infections (source chunk 1, page 859).
+
+5. When urgent medical care is needed: If the sudden patchy hair loss is accompanied by other symptoms like fever, severe itching, or pain, it's essential to seek professional medical care as soon as possible, as these could indicate an underlying infection or other serious condition (source chunk 1, page 859). Additionally, if the hair loss is extensive and causing significant emotional distress, consulting a healthcare professional for further evaluation and treatment options is recommended.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [46]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Fine-Tuning - Combination 3: Larger retrieved context
+
+tuned_answer_3 = generate_rag_response(
+    user_input=tuning_question,
+    k=6,
+    max_tokens=1000,
+    temperature=0.0,
+    top_p=0.95,
+    top_k=50
+)
+
+print(tuned_answer_3)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer:
+Sudden patchy hair loss, also known as alopecia areata, is characterized by localized bald spots on the scalp or other hair-bearing areas. This condition is thought to be an autoimmune disorder affecting genetically susceptible individuals exposed to unclear environmental triggers (Source chunk 5).
+
+2. Key symptoms or clinical signs:
+The primary symptom of alopecia areata is the sudden appearance of smooth, round, or oval bald patches on the scalp or other areas where hair once grew (Source chunk 1 and Source chunk 5). In some cases, total hair loss (alopecia universalis) may occur.
+
+3. Recommended treatment or management steps:
+There are several treatment options for alopecia areata, including topical corticosteroids, topical immunotherapy (diphencyprone or squaric acid dibutylester), and systemic corticosteroids in severe cases (Source chunk 1). Behavior modification techniques, clomipramine, or selective serotonin reuptake inhibitors (SSRIs) like fluoxetine, fluvoxamine, paroxetine, sertraline, or citalopram may also be beneficial for managing trichotillomania, a condition that can contribute to patchy hair loss (Source chunk 1).
+
+4. Important precautions:
+It is essential to note that the effectiveness of treatments for alopecia areata varies from person to person. In some cases, hair regrowth may take several months or even years. Additionally, long-term use of corticosteroids can have side effects, so it's crucial to consult a healthcare professional before starting any treatment (Source chunk 1).
+
+5. When urgent medical care is needed:
+If you experience sudden patchy hair loss and suspect alopecia areata but also notice symptoms such as fever, weight loss, or other signs of systemic illness, it's essential to seek urgent medical care. These symptoms could indicate an underlying disorder causing the hair loss (Source chunk 1). Additionally, if you have extensive hair loss or are concerned about your condition, consult a healthcare professional for proper evaluation and treatment recommendations.
+
+Retrieved page numbers: 856, 858-859, and 860.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [47]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Fine-Tuning - Combination 4: Slightly higher temperature
+
+tuned_answer_4 = generate_rag_response(
+    user_input=tuning_question,
+    k=4,
+    max_tokens=900,
+    temperature=0.2,
+    top_p=0.90,
+    top_k=40
+)
+
+print(tuned_answer_4)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer: Sudden patchy hair loss, also known as alopecia, can have various causes including androgenetic alopecia, drugs (including chemotherapeutic agents), infection, or autoimmune disorders. For localized bald spots on the scalp, recommended treatments include topical minoxidil for androgenetic alopecia, elimination of physical traction or stress for traction alopecia, antifungals for tinea capitis, and behavior modification or medications like clomipramine or selective serotonin reuptake inhibitors (SSRIs) for trichotillomania.
+
+2. Key symptoms or clinical signs: Sudden patchy hair loss presents as localized bald spots on the scalp. The size, shape, and distribution of these patches can vary. In some cases, there might be no visible scaliness or inflammation.
+
+3. Recommended treatment or management steps: For androgenetic alopecia, topical minoxidil (2% for women, 2% or 5% for men) can help prolong the anagen growth phase and enlarge miniaturized follicles. Traction alopecia is treated by eliminating physical traction or stress to the scalp. Tinea capitis requires topical or oral antifungals. Trichotillomania may benefit from behavior modification, clomipramine, or an SSRI like fluoxetine, fluvoxamine, paroxetine, sertraline, or citalopram.
+
+4. Important precautions: It is crucial to identify the underlying cause of sudden patchy hair loss before initiating treatment. Self-diagnosis and self-treatment are not recommended as some causes may require professional medical care.
+
+5. When urgent medical care is needed: If the patchy hair loss is accompanied by other symptoms like severe itching, pain, or fever, it could indicate an underlying infection or autoimmune disorder that requires prompt medical attention. Always consult a healthcare professional for proper diagnosis and treatment.
+
+Source context: The information provided in this answer was retrieved from pages 856, 858, and 859 of the Merck Manual of Diagnosis &amp; Therapy, 19th Edition.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [48]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># RAG Fine-Tuning - Combination 5: Broader retrieval with stricter sampling
+
+tuned_answer_5 = generate_rag_response(
+    user_input=tuning_question,
+    k=5,
+    max_tokens=1000,
+    temperature=0.1,
+    top_p=0.85,
+    top_k=30
+)
+
+print(tuned_answer_5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">1. Brief answer:
+Sudden patchy hair loss, also known as alopecia areata, is characterized by localized bald spots on the scalp or other hair-bearing areas. This condition may affect most or all of the body (alopecia universalis). The exact cause is unknown but believed to be an autoimmune disorder affecting genetically susceptible individuals exposed to unclear environmental triggers (Source chunk 5, p. 849).
+
+2. Key symptoms or clinical signs:
+The primary symptom is the sudden appearance of smooth, round, or oval bald patches on the scalp or other hair-bearing areas. The border of the bald patch may be scaly or inflamed (Source chunk 1, p. 859).
+
+3. Recommended treatment or management steps:
+For mild cases, no specific treatment is necessary as the hair usually grows back on its own within a year. For more severe cases, various treatments can be considered, including topical corticosteroids, immunotherapy (diphencyprone or squaric acid dibutylester), minoxidil, or systemic corticosteroids (Source chunk 1, p. 859). Behavior modification techniques and certain medications like clomipramine or selective serotonin reuptake inhibitors (SSRIs) may be beneficial for trichotillomania, a condition that can cause patchy hair loss due to compulsive pulling of one's own hair (Source chunk 1, p. 859).
+
+4. Important precautions:
+It is essential to avoid physical or emotional stress and trauma to the affected areas as they may worsen the condition. In addition, it is crucial to maintain a healthy lifestyle, including proper nutrition and adequate hydration (Source chunk 1, p. 859).
+
+5. When urgent medical care is needed:
+If the patchy hair loss is accompanied by symptoms such as fever, weight loss, or severe emotional distress, it is essential to consult a healthcare professional for further evaluation, as these could indicate underlying systemic disorders (Source chunk 1, p. 859). Additionally, if the condition persists despite treatment or worsens rapidly, medical consultation is recommended.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [49]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Summary of RAG fine-tuning combinations
+
+rag_tuning_summary = pd.DataFrame([
+    {
+        "Combination": "Combination 1 - Baseline",
+        "k": 4,
+        "max_tokens": 900,
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "top_k": 50,
+        "Purpose": "Balanced default RAG setting"
+    },
+    {
+        "Combination": "Combination 2 - Smaller retrieved context",
+        "k": 2,
+        "max_tokens": 900,
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "top_k": 50,
+        "Purpose": "Checks whether fewer chunks improve focus"
+    },
+    {
+        "Combination": "Combination 3 - Larger retrieved context",
+        "k": 6,
+        "max_tokens": 1000,
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "top_k": 50,
+        "Purpose": "Checks whether more chunks improve completeness"
+    },
+    {
+        "Combination": "Combination 4 - Higher temperature",
+        "k": 4,
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.90,
+        "top_k": 40,
+        "Purpose": "Checks effect of slightly more flexible generation"
+    },
+    {
+        "Combination": "Combination 5 - Broader retrieval with stricter sampling",
+        "k": 5,
+        "max_tokens": 1000,
+        "temperature": 0.1,
+        "top_p": 0.85,
+        "top_k": 30,
+        "Purpose": "Checks balance between broader retrieval and controlled generation"
+    }
+])
+
+rag_tuning_summary</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[49]:</div>
+                        <div class="output-content">
+                            <div class="output-html">
+  <div id="df-dcaae626-c90a-4700-8de7-683da492bce4" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Combination</th>
+      <th>k</th>
+      <th>max_tokens</th>
+      <th>temperature</th>
+      <th>top_p</th>
+      <th>top_k</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Combination 1 - Baseline</td>
+      <td>4</td>
+      <td>900</td>
+      <td>0.0</td>
+      <td>0.95</td>
+      <td>50</td>
+      <td>Balanced default RAG setting</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Combination 2 - Smaller retrieved context</td>
+      <td>2</td>
+      <td>900</td>
+      <td>0.0</td>
+      <td>0.95</td>
+      <td>50</td>
+      <td>Checks whether fewer chunks improve focus</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Combination 3 - Larger retrieved context</td>
+      <td>6</td>
+      <td>1000</td>
+      <td>0.0</td>
+      <td>0.95</td>
+      <td>50</td>
+      <td>Checks whether more chunks improve completeness</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Combination 4 - Higher temperature</td>
+      <td>4</td>
+      <td>900</td>
+      <td>0.2</td>
+      <td>0.90</td>
+      <td>40</td>
+      <td>Checks effect of slightly more flexible genera...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Combination 5 - Broader retrieval with stricte...</td>
+      <td>5</td>
+      <td>1000</td>
+      <td>0.1</td>
+      <td>0.85</td>
+      <td>30</td>
+      <td>Checks balance between broader retrieval and c...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-dcaae626-c90a-4700-8de7-683da492bce4')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-dcaae626-c90a-4700-8de7-683da492bce4 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-dcaae626-c90a-4700-8de7-683da492bce4');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_9dd2b2df-0ce9-4373-b441-8c1f2a08be49">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('rag_tuning_summary')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_9dd2b2df-0ce9-4373-b441-8c1f2a08be49 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('rag_tuning_summary');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observations from RAG Fine-Tuning</h3><br><br>Five different RAG configurations were tested by changing both retriever and LLM parameters. The representative tuning question used was the sudden patchy hair loss question because the first RAG answer retrieved somewhat broad context and mixed different types of alopecia.<br><br>Combination 1 used the baseline setting with <code>k=4</code>, <code>max_tokens=900</code>, <code>temperature=0.0</code>, <code>top_p=0.95</code>, and <code>top_k=50</code>. This answer was useful, but it was somewhat broad because it included androgenetic alopecia, drug-related hair loss, infections, and underlying disorders. It answered the question, but it was not the most specific result for sudden localized bald spots.<br><br>Combination 2 reduced the retriever value to <code>k=2</code> while keeping the LLM generation stable with <code>temperature=0.0</code>. This produced the most focused answer. It identified the condition as alopecia areata and included specific clinical signs such as round or oval bald spots and exclamation mark hairs. It also gave relevant treatment options such as topical or intralesional corticosteroids, minoxidil, anthralin, immunotherapy, and treatment of the underlying cause. This was the best result for this question.<br><br>Combination 3 increased the retriever value to <code>k=6</code> and allowed a longer response with <code>max_tokens=1000</code>. This produced a more complete answer and included autoimmune causes, environmental triggers, and related conditions such as trichotillomania. However, because more chunks were retrieved, the answer became broader and included some details that were less central to the exact question.<br><br>Combination 4 used a slightly higher temperature of <code>0.2</code>. The answer was readable and well structured, but it did not improve factual grounding compared with the lower-temperature outputs. For a medical assistant prototype, lower temperature is preferred because the answer should be stable, factual, and less variable.<br><br>Combination 5 used broader retrieval with <code>k=5</code> and stricter sampling settings with <code>temperature=0.1</code>, <code>top_p=0.85</code>, and <code>top_k=30</code>. This answer was strong and mentioned alopecia areata, possible autoimmune causes, bald patches, corticosteroids, immunotherapy, minoxidil, and systemic corticosteroids. However, it was slightly broader than Combination 2.<br><br>Overall, retriever tuning had a stronger effect than LLM sampling changes. A smaller <code>k</code> value gave a more focused answer when the question was specific, while larger <code>k</code> values gave more complete but sometimes broader answers. Temperature values near <code>0.0</code> were better for medical question answering because they produced stable and factual responses.<br><br>Based on this tuning experiment, Combination 2 was the best configuration for the patchy hair loss question:<br><br>* <code>k = 2</code><br>* <code>max_tokens = 900</code><br>* <code>temperature = 0.0</code><br>* <code>top_p = 0.95</code><br>* <code>top_k = 50</code><br><br>This shows that the best retriever setting may depend on the type of medical question. Focused clinical questions may benefit from fewer retrieved chunks, while broader treatment or emergency-care questions may require more retrieved context.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Output Evaluation</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">Let us now use the LLM-as-a-judge method to check the quality of the RAG system on two parameters - retrieval and generation. We illustrate this evaluation based on the answeres generated to the question from the previous section.<br><br>- We are using the same Mistral model for evaluation, so basically here the llm is rating itself on how well he has performed in the task.</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [50]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>groundedness_rater_system_message = """
+You are an evaluator for a medical RAG question-answering system.
+
+Your task is to evaluate GROUNDEDNESS.
+
+Groundedness means checking whether the answer is supported by the retrieved medical manual context.
+
+Use only the given context for evaluation.
+Do not use your own medical knowledge.
+Do not reward an answer for being medically correct if it is not supported by the retrieved context.
+
+Give a score from 1 to 5:
+
+1 = The answer is mostly unsupported or contradicts the context.
+2 = The answer has limited support and contains several unsupported claims.
+3 = The answer is partially supported but misses some context or adds unsupported details.
+4 = The answer is mostly supported with only minor unsupported details.
+5 = The answer is fully supported by the retrieved context.
+
+Return the evaluation in this format:
+
+Groundedness Score: &lt;1-5&gt;
+Reason:
+&lt;brief explanation&gt;
+
+Unsupported or weakly supported points:
+&lt;list any unsupported claims, or write "None"&gt;
+
+Final comment:
+&lt;short overall judgment&gt;
+"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [51]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>relevance_rater_system_message = """
+You are an evaluator for a medical RAG question-answering system.
+
+Your task is to evaluate RELEVANCE.
+
+Relevance means checking whether the answer directly addresses the user's medical question.
+
+Evaluate whether the answer:
+- answers all parts of the question
+- stays focused on the question
+- avoids unnecessary or unrelated information
+- provides clinically useful and clear information
+- includes precautions or urgent-care guidance when appropriate
+
+Do not evaluate whether the answer is grounded in the context here.
+Only evaluate how well the answer addresses the question.
+
+Give a score from 1 to 5:
+
+1 = The answer is mostly irrelevant or does not answer the question.
+2 = The answer answers only a small part of the question.
+3 = The answer is somewhat relevant but incomplete.
+4 = The answer is relevant and mostly complete.
+5 = The answer directly and completely answers the question.
+
+Return the evaluation in this format:
+
+Relevance Score: &lt;1-5&gt;
+Reason:
+&lt;brief explanation&gt;
+
+Missing or unnecessary points:
+&lt;list missing/unnecessary points, or write "None"&gt;
+
+Final comment:
+&lt;short overall judgment&gt;
+"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [52]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>user_message_template = """
+Retrieved medical manual context:
+{context}
+
+User question:
+{question}
+
+Generated answer:
+{answer}
+
+Evaluate the generated answer according to the evaluation instructions.
+"""</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [54]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>def generate_ground_relevance_response(
+    user_input,
+    k=3,
+    max_tokens=700,
+    eval_max_tokens=350,
+    temperature=0,
+    top_p=0.95,
+    top_k=50
+):
+    global qna_system_message, qna_user_message_template
+    global groundedness_rater_system_message, relevance_rater_system_message
+    global user_message_template, vectordb, llm
+
+    # Create retriever with the selected k value
+    current_retriever = vectordb.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": k}
+    )
+
+    # Retrieve relevant document chunks
+    try:
+        relevant_document_chunks = current_retriever.get_relevant_documents(user_input)
+    except AttributeError:
+        relevant_document_chunks = current_retriever.invoke(user_input)
+
+    # Prepare retrieved context with source/page information
+    context_list = []
+
+    for i, doc in enumerate(relevant_document_chunks, start=1):
+        page_number = doc.metadata.get("page", "Unknown")
+
+        if isinstance(page_number, int):
+            display_page = page_number + 1
+        else:
+            display_page = page_number
+
+        context_list.append(
+            f"Source chunk {i} | Page: {display_page}\n{doc.page_content}"
+        )
+
+    context_for_query = "\n\n".join(context_list)
+
+    # Generate RAG answer using the same RAG function from the previous section
+    answer = generate_rag_response(
+        user_input=user_input,
+        k=k,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        top_k=top_k
+    )
+
+    # Prepare judge input
+    judge_user_message = user_message_template.format(
+        context=context_for_query,
+        question=user_input,
+        answer=answer
+    )
+
+    groundedness_prompt = f"""[INST]
+{groundedness_rater_system_message}
+
+{judge_user_message}
+[/INST]"""
+
+    relevance_prompt = f"""[INST]
+{relevance_rater_system_message}
+
+{judge_user_message}
+[/INST]"""
+
+    # Groundedness evaluation
+    groundedness_response = llm(
+        prompt=groundedness_prompt,
+        max_tokens=eval_max_tokens,
+        temperature=0.0,
+        top_p=0.95,
+        top_k=50,
+        stop=["&lt;/s&gt;"]
+    )
+
+    # Relevance evaluation
+    relevance_response = llm(
+        prompt=relevance_prompt,
+        max_tokens=eval_max_tokens,
+        temperature=0.0,
+        top_p=0.95,
+        top_k=50,
+        stop=["&lt;/s&gt;"]
+    )
+
+    groundedness_output = groundedness_response["choices"][0]["text"].strip()
+    relevance_output = relevance_response["choices"][0]["text"].strip()
+
+    return answer, groundedness_output, relevance_output</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 1: What is the protocol for managing sepsis in a critical care unit?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [55]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question_1_eval = "What is the protocol for managing sepsis in a critical care unit?"
+
+answer_eval_1, groundedness_eval_1, relevance_eval_1 = generate_ground_relevance_response(
+    user_input=question_1_eval,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print("RAG Answer:")
+print(answer_eval_1)
+
+print("\nGroundedness Evaluation:")
+print(groundedness_eval_1)
+
+print("\nRelevance Evaluation:")
+print(relevance_eval_1)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">RAG Answer:
+1. Brief answer: Sepsis, a serious inflammatory condition caused by bacterial infection, requires aggressive management in critical care units. The goal is to prevent organ failure and maintain patient comfort (Source chunk 3, p. 2454).
+
+2. Key symptoms or clinical signs: Fever, hypotension, oliguria, confusion, and acute organ dysfunction are common indicators of sepsis and severe sepsis (Source chunk 3 and 4, pp. 2454-2455).
+
+3. Recommended treatment or management steps: Warm the patient, control hemorrhage, secure airway and ventilate if necessary, provide supplemental oxygen, administer antibiotics, and initiate fluid resuscitation (Source chunk 2, p. 2449). Surgical intervention may be required for infected or necrotic tissues (Source chunk 3, p. 2454).
+
+4. Important precautions: Nothing should be given by mouth, and the patient's head should be turned to prevent aspiration if emesis occurs (Source chunk 2, p. 2449).
+
+5. When urgent medical care is needed: Septic shock, a life-threatening complication of sepsis, requires immediate attention due to high mortality rates. Prompt diagnosis and aggressive treatment are crucial (Source chunk 2, p. 2449). Always consult a healthcare professional for proper evaluation and management.
+
+Groundedness Evaluation:
+Groundedness Score: 5
+Reason:
+The answer is fully supported by the retrieved context. It accurately summarizes the key points regarding sepsis, its symptoms, and recommended treatment from the provided medical manual context.
+
+Unsupported or weakly supported points:
+None
+
+Final comment:
+The generated answer provides a comprehensive response that is fully grounded in the given medical manual context.
+
+Relevance Evaluation:
+Relevance Score: 5
+Reason:
+The answer directly and completely answers the user's question by providing an overview of sepsis, its symptoms, recommended treatment steps, important precautions, and when urgent medical care is needed. It stays focused on the question and avoids unnecessary or unrelated information. The generated answer also includes clinically useful and clear information that can help manage sepsis in a critical care unit.
+
+Missing or unnecessary points:
+None
+
+Final comment:
+The generated answer provides a comprehensive response to managing sepsis in a critical care unit, making it an excellent example of a relevant and complete answer.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation for Query 1: Sepsis Management</h3><br><br>For the sepsis management question, the RAG-generated answer received a <strong>Groundedness Score of 5</strong> and a <strong>Relevance Score of 5</strong>.<br><br>The groundedness evaluation indicates that the answer is well supported by the retrieved Merck Manual context. The response refers to source chunks and page numbers while explaining important clinical signs such as fever, hypotension, oliguria, confusion, and organ dysfunction. It also mentions management steps such as airway support, oxygen, antibiotics, fluid resuscitation, and surgical intervention for infected or necrotic tissue when required.<br><br>The relevance evaluation also gave the answer a score of 5 because the response directly addresses the question about managing sepsis in a critical care unit. It is structured clearly and covers symptoms, treatment steps, precautions, and the need for urgent medical care in septic shock.<br><br>Overall, the evaluation suggests that the RAG system performed well for this question. Compared with a direct LLM answer, the RAG answer is more reliable because it is grounded in retrieved medical manual content. However, the evaluation is still performed by an LLM, so the score should be treated as a useful automated assessment rather than a perfect clinical judgment.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 2: What are the common symptoms for appendicitis, and can it be cured via medicine? If not, what surgical procedure should be followed to treat it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [56]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question_2_eval = """What are the common symptoms of appendicitis, and can it be cured via medicine?
+If not, what surgical procedure should be followed to treat it?"""
+
+answer_eval_2, groundedness_eval_2, relevance_eval_2 = generate_ground_relevance_response(
+    user_input=question_2_eval,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print("RAG Answer:")
+print(answer_eval_2)
+
+print("\nGroundedness Evaluation:")
+print(groundedness_eval_2)
+
+print("\nRelevance Evaluation:")
+print(relevance_eval_2)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">RAG Answer:
+1. Brief answer:
+Appendicitis is an inflammatory condition of the appendix, typically causing abdominal pain, anorexia, and tenderness. If left untreated, it can lead to necrosis, gangrene, perforation, and the formation of an appendiceal abscess. The common symptoms include epigastric or periumbilical pain followed by right lower quadrant pain, nausea, vomiting, and loss of appetite. There is no cure for appendicitis with medicine alone; surgical removal is the standard treatment.
+
+2. Key symptoms or clinical signs:
+The classic symptoms of acute appendicitis are epigastric or periumbilical pain followed by right lower quadrant pain, nausea, vomiting, and loss of appetite. Pain increases with cough and motion. Direct and rebound tenderness is located at McBurney's point (junction of the middle and outer thirds of the line joining the umbilicus to the anterior superior spine).
+
+3. Recommended treatment or management steps:
+The treatment for appendicitis involves surgical removal of the inflamed appendix. Before the operation, an NGT is inserted, and patients with signs of volume depletion should have urine output monitored with a catheter. Fluid status is maintained by adequate IV fluid and electrolyte replacement, and IV antibiotics effective against intestinal flora are given (e.g., cefotetan 1 to 2 g bid or amikacin 5 mg/kg tid plus clindamycin 600 to 900 mg qid).
+
+4. Important precautions:
+If an abscess or inflammatory mass has formed, the procedure may be limited to drainage of the abscess. Patients should be monitored for signs of volume depletion and receive adequate IV fluid and electrolyte replacement.
+
+5. When urgent medical care is needed:
+Urgent medical care is required if symptoms of appendicitis are present, as untreated appendicitis can lead to serious complications such as perforation, gangrene, and sepsis. If you suspect appendicitis, consult a healthcare professional immediately.
+
+Source context:
+- Page: 173, 174 (Etiology, Symptoms and Signs, Treatment)
+
+Groundedness Evaluation:
+Groundedness Score: 5
+Reason:
+The generated answer is fully supported by the retrieved context. It accurately identifies the common symptoms of appendicitis, explains that there is no medical cure for appendicitis, and describes the recommended surgical procedure for treatment. The answer also includes important precautions and when urgent medical care is needed, which are mentioned in the context.
+
+Unsupported or weakly supported points:
+None
+
+Final comment:
+The generated answer is a comprehensive and accurate response to the user question, fully grounded in the provided medical manual context.
+
+Relevance Evaluation:
+Relevance Score: 5
+Reason:
+The generated answer directly and completely answers all parts of the user's question by providing a brief explanation of appendicitis, its symptoms, and the recommended treatment (surgery). It stays focused on the question without introducing unnecessary or unrelated information. The answer is clinically useful and clear, as it includes key symptoms, recommended treatment steps, and important precautions.
+
+Missing or unnecessary points:
+None
+
+Final comment:
+The generated answer provides a comprehensive response to the user's question about the common symptoms of appendicitis and the available treatment options. It is directly relevant, clear, and clinically useful.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation for Query 2: Appendicitis</h3><br><br>For the appendicitis question, the RAG-generated answer received a <strong>Groundedness Score of 5</strong> and a <strong>Relevance Score of 5</strong>.<br><br>The groundedness evaluation shows that the answer is strongly supported by the retrieved medical manual context. The response correctly explains that appendicitis commonly presents with epigastric or periumbilical pain that later shifts to the right lower quadrant, along with nausea, vomiting, anorexia, tenderness, and worsening pain with movement or coughing. It also includes complications such as necrosis, gangrene, perforation, abscess formation, and sepsis, which makes the answer clinically detailed.<br><br>The relevance evaluation also gave the answer a score of 5 because it directly answers all parts of the question. It explains the common symptoms, clarifies that appendicitis is not cured by medicine alone, and identifies surgical removal of the appendix as the standard treatment. The answer also adds useful pre-operative management steps such as IV fluids, electrolyte replacement, antibiotics, and monitoring.<br><br>Overall, the RAG system performed very well for this question. The answer is complete, focused, and grounded in the retrieved source context. One minor point to note is that the answer contains detailed antibiotic examples and dosages, which may be useful for medical reference but should still be interpreted by qualified healthcare professionals in real clinical use.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 3: What are the effective treatments or solutions for addressing sudden patchy hair loss, commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [57]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question_3_eval = """What are the effective treatments or solutions for addressing sudden patchy hair loss,
+commonly seen as localized bald spots on the scalp, and what could be the possible causes behind it?"""
+
+answer_eval_3, groundedness_eval_3, relevance_eval_3 = generate_ground_relevance_response(
+    user_input=question_3_eval,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print("RAG Answer:")
+print(answer_eval_3)
+
+print("\nGroundedness Evaluation:")
+print(groundedness_eval_3)
+
+print("\nRelevance Evaluation:")
+print(relevance_eval_3)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">RAG Answer:
+1. Brief answer: Sudden patchy hair loss, also known as alopecia, can have various causes including androgenetic alopecia, drugs (including chemotherapeutic agents), infection, or underlying disorders. Treatment options depend on the cause. Androgenetic alopecia can be managed with minoxidil, while other causes require addressing the underlying condition.
+
+2. Key symptoms or clinical signs: Sudden appearance of localized bald spots on the scalp.
+
+3. Recommended treatment or management steps: For androgenetic alopecia, topical minoxidil (2% for women, 2% or 5% for men) can be used to prolong the anagen growth phase and enlarge miniaturized follicles. For other causes, treating underlying conditions is essential.
+
+4. Important precautions: Daily hair counts can help quantify hair loss when the pull test is negative. Hairs lost during morning combing or washing should be collected in clear plastic bags for 14 days and recorded to monitor abnormal hair loss (&gt; 100/day, except after shampooing).
+
+5. When urgent medical care is needed: If sudden patchy hair loss is accompanied by other symptoms such as fever, severe itching, or pain, consult a healthcare professional immediately, as it could be indicative of an underlying infection or inflammatory condition.
+
+Retrieved context from The Merck Manual of Diagnosis &amp; Therapy, 19th Edition:
+- Source chunk 1 (Page: 859)
+- Source chunk 2 (Page: 856, 857, 858)
+- Source chunk 3 (Page: 858, 859)
+
+Groundedness Evaluation:
+Groundedness Score: 5
+Reason:
+The generated answer accurately reflects the information provided in the context regarding causes and treatments for sudden patchy hair loss, also known as alopecia. The answer mentions various causes such as androgenetic alopecia, drugs (including chemotherapeutic agents), infection, and underlying disorders, which are all discussed in the context. Additionally, the recommended treatment options align with those mentioned in the context for androgenetic alopecia and addressing underlying conditions for other causes.
+
+Unsupported or weakly supported points:
+None
+
+Final comment:
+The generated answer is fully supported by the retrieved context and provides an accurate summary of the information regarding causes and treatments for sudden patchy hair loss.
+
+Relevance Evaluation:
+Relevance Score: 5
+Reason:
+The generated answer directly and completely answers the user's question by providing information on possible causes of sudden patchy hair loss (alopecia) and effective treatments for each cause, including androgenetic alopecia, drugs, infection, and underlying disorders. The answer also includes important precautions and when to seek urgent medical care.
+
+Missing or unnecessary points:
+None
+
+Final comment:
+The generated answer provides a comprehensive response that directly addresses the user's question with clinically useful information.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation for Query 3: Sudden Patchy Hair Loss</h3><br><br>For the sudden patchy hair loss question, the RAG-generated answer received a <strong>Groundedness Score of 5</strong> and a <strong>Relevance Score of 5</strong>.<br><br>The groundedness evaluation indicates that the answer is well supported by the retrieved Merck Manual context. The response correctly explains that sudden patchy hair loss may be caused by different forms of alopecia, drugs such as chemotherapeutic agents, infection, or underlying disorders. It also appropriately explains that treatment depends on the underlying cause.<br><br>The relevance evaluation also gave the answer a score of 5 because the response directly answers the question by covering both possible causes and treatment or management options. The answer mentions topical minoxidil for androgenetic alopecia and emphasizes the need to treat underlying conditions in other cases. It also includes a practical monitoring method using daily hair counts.<br><br>Overall, the RAG system performed well for this question. The response is focused, clinically useful, and grounded in the retrieved source context. One important observation is that the answer is broader than only alopecia areata; it treats sudden patchy hair loss as a symptom that may have multiple causes. This is useful because it avoids assuming a single diagnosis without proper clinical evaluation.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 4: What treatments are recommended for a person who has sustained a physical injury to brain tissue, resulting in temporary or permanent impairment of brain function?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [58]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question_4_eval = """What treatments are recommended for a person who has sustained a physical injury to brain tissue,
+resulting in temporary or permanent impairment of brain function?"""
+
+answer_eval_4, groundedness_eval_4, relevance_eval_4 = generate_ground_relevance_response(
+    user_input=question_4_eval,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print("RAG Answer:")
+print(answer_eval_4)
+
+print("\nGroundedness Evaluation:")
+print(groundedness_eval_4)
+
+print("\nRelevance Evaluation:")
+print(relevance_eval_4)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">RAG Answer:
+1. Brief answer: For a person with a brain injury resulting in temporary or permanent impairment of brain function, recommended treatments include supportive care to prevent systemic complications, provide good nutrition, prevent pressure ulcers, and physical therapy to prevent limb contractures (Chapters 173 and 174, pages 1824, 1833-1834, 1843-1844).
+
+2. Key symptoms or clinical signs: The specific symptoms depend on the extent and location of the brain injury. A person may experience temporary or permanent loss of cognitive function, communication difficulties, limited ability to live independently, and even vegetative state (Chapter 174, pages 1833-1834).
+
+3. Recommended treatment or management steps: Supportive care is crucial for managing complications due to immobilization, such as pneumonia, UTI, and thromboembolic disease. Early intervention by rehabilitation specialists is essential for maximal functional recovery (Chapter 174, pages 1834, 1843).
+
+4. Important precautions: Monitoring for signs of systemic complications, such as pneumonia, UTI, and thromboembolic disease, is essential to prevent further damage (Chapters 173 and 174, pages 1824, 1833-1834).
+
+5. When urgent medical care is needed: If the brain injury results in severe symptoms or complications, such as loss of consciousness, difficulty breathing, or signs of infection, seek immediate professional medical care (Chapters 173 and 174, pages 1824, 1833-1834).
+
+Groundedness Evaluation:
+Groundedness Score: 5
+Reason:
+The generated answer is fully supported by the retrieved context as it accurately summarizes and references the recommended treatments for a person with a brain injury, including supportive care, nutrition, pressure ulcer prevention, physical therapy, and early intervention by rehabilitation specialists (Chapters 173 and 174, pages 1824, 1833-1834).
+
+Unsupported or weakly supported points:
+None.
+
+Final comment:
+The generated answer is a comprehensive and accurate summary of the recommended treatments for a person with a brain injury, fully supported by the retrieved context.
+
+Relevance Evaluation:
+Relevance Score: 5
+Reason:
+The generated answer directly and completely answers the user's question by listing specific treatments recommended for a person with a brain injury, including supportive care, nutrition, pressure ulcer prevention, physical therapy, and early intervention by rehabilitation specialists. The answer also mentions key symptoms or clinical signs and important precautions related to brain injuries.
+
+Missing or unnecessary points:
+None
+
+Final comment:
+The generated answer provides a clear, comprehensive, and clinically useful response that directly addresses the user's question about treatments for a person with a brain injury.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation for Query 4: Brain Injury</h3><br><br>For the brain injury question, the RAG-generated answer received a <strong>Groundedness Score of 5</strong> and a <strong>Relevance Score of 5</strong>.<br><br>The groundedness evaluation indicates that the answer is fully supported by the retrieved Merck Manual context. The response explains that treatment for brain injury depends on supportive care, prevention of complications, nutrition, pressure ulcer prevention, physical therapy, and rehabilitation. These points are linked to the retrieved chapters and page references, making the answer well grounded in the source material.<br><br>The relevance evaluation also gave the answer a score of 5 because it directly answers the question about treatment after physical injury to brain tissue. The answer is clinically useful because it does not overgeneralize one single treatment. Instead, it explains that management may include supportive care, prevention of systemic complications such as pneumonia, urinary tract infection, and thromboembolic disease, and early rehabilitation to improve functional recovery.<br><br>Overall, the RAG system performed well for this question. The answer is focused, source-supported, and appropriate for a medical decision-support prototype. One limitation is that the answer is more focused on supportive and rehabilitation care than emergency neurosurgical interventions, but this appears consistent with the retrieved context used for this response.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Query 5: What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip, and what should be considered for their care and recovery?</h3></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [59]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>question_5_eval = """What are the necessary precautions and treatment steps for a person who has fractured their leg during a hiking trip,
+and what should be considered for their care and recovery?"""
+
+answer_eval_5, groundedness_eval_5, relevance_eval_5 = generate_ground_relevance_response(
+    user_input=question_5_eval,
+    k=final_rag_config["k"],
+    max_tokens=final_rag_config["max_tokens"],
+    temperature=final_rag_config["temperature"],
+    top_p=final_rag_config["top_p"],
+    top_k=final_rag_config["top_k"]
+)
+
+print("RAG Answer:")
+print(answer_eval_5)
+
+print("\nGroundedness Evaluation:")
+print(groundedness_eval_5)
+
+print("\nRelevance Evaluation:")
+print(relevance_eval_5)</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream output-stderr">Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+Llama.generate: prefix-match hit
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">RAG Answer:
+1. A person with a fractured leg from a hiking injury should rest and avoid weight-bearing activities, possibly using crutches for mobility (Merck Manual p. 3387). They may require immobilization, splinting, or definitive treatment like reduction (Merck Manual p. 3391).
+2. Key symptoms include pain, swelling, poor muscle function, and possibly visible deformity in severe cases.
+3. Recommended treatment steps include rest, ice, compression, and elevation (RICE) as soon as possible, along with prescribed NSAIDs or analgesics for pain relief (Merck Manual p. 3502). A reliable patient may inspect the wound but should seek early physician examination for higher risk wounds or those in unreliable patients (Merck Manual p. 3387).
+4. Important precautions include preventing further injury to soft tissues by immobilizing the leg and avoiding weight-bearing activities.
+5. Urgent medical care is needed if there are signs of life-threatening complications, such as rapid blood loss or fat embolism (Merck Manual p. 3389). Additionally, open injuries that predispose to infection should be evaluated promptly by a healthcare professional.
+
+Groundedness Evaluation:
+Groundedness Score: 5
+Reason:
+The generated answer fully supports the context provided in the medical manual by addressing all necessary precautions and treatment steps for a person with a fractured leg, as well as acknowledging potential complications and their treatment.
+
+Unsupported or weakly supported points:
+None
+
+Final comment:
+The generated answer accurately reflects the information presented in the context and provides a comprehensive response to the user question.
+
+Relevance Evaluation:
+Relevance Score: 5
+Reason:
+The generated answer directly and completely answers all parts of the user's question regarding precautions, treatment steps, and necessary considerations for a person with a fractured leg from a hiking injury. It stays focused on the question by providing information from the provided context about rest, immobilization, RICE, pain relief, urgent medical care, and potential complications. The answer avoids unnecessary or unrelated information and provides clinically useful and clear information that is relevant to the user's query.
+
+Missing or unnecessary points:
+None
+
+Final comment:
+The generated answer effectively addresses the user's question by providing a comprehensive response based on the provided context, making it an ideal answer for a medical RAG question-answering system.
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Observation for Query 5: Leg Fracture During Hiking</h3><br><br>For the leg fracture question, the RAG-generated answer received a <strong>Groundedness Score of 5</strong> and a <strong>Relevance Score of 5</strong>.<br><br>The groundedness evaluation indicates that the answer is fully supported by the retrieved Merck Manual context. The response explains important fracture-management steps such as rest, avoiding weight-bearing activities, using crutches if needed, immobilization, splinting, reduction, RICE management, pain relief, and early physician evaluation for high-risk wounds.<br><br>The relevance evaluation also gave the answer a score of 5 because it directly answers the question about precautions, treatment steps, and recovery considerations after a leg fracture during a hiking trip. The answer is focused and clinically useful because it includes immediate first-aid measures, prevention of further injury, wound evaluation, pain management, and warning signs requiring urgent care.<br><br>Overall, the RAG system performed well for this question. The answer is clear, relevant, and grounded in the retrieved source context. It also appropriately highlights serious complications such as rapid blood loss, fat embolism, and infection risk in open injuries, which are important considerations for fracture care.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Overall Observations from Output Evaluation</h3><br><br>The output evaluation was conducted using two evaluation prompts: one for <strong>groundedness</strong> and one for <strong>relevance</strong>. Groundedness checked whether each RAG-generated answer was supported by the retrieved Merck Manual context, while relevance checked whether each answer directly addressed the user’s medical question.<br><br>Across all five project questions, the RAG responses received high scores for both groundedness and relevance. This suggests that the retrieval system was able to find useful source chunks from the medical manual and that the language model was able to convert the retrieved information into clear, structured answers.<br><br>The evaluation also shows the advantage of RAG over direct LLM-based answering. Direct LLM responses may be useful but are not explicitly connected to the provided medical source. In contrast, the RAG responses include information grounded in retrieved context, making them more reliable for a healthcare decision-support prototype.<br><br>However, one limitation is that the evaluation was performed using an LLM judge. While this is useful for automated assessment, it should not be treated as a replacement for expert medical review. In a real healthcare setting, answers should be validated by qualified medical professionals before being used for clinical decision-making.<br><br>Overall, the output evaluation supports the conclusion that the RAG-based system provides relevant, source-grounded, and clinically useful responses for the given medical questions.<br></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h2>Actionable Insights and Business Recommendations</h2></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Actionable Insights</h3><br><br>1. Direct LLM responses were useful and readable, but they were generated only from the model's internal knowledge. This creates a risk of unsupported or generic medical information.<br><br>2. Prompt engineering improved the structure of the answers by forcing the model to respond using a consistent medical format: brief explanation, symptoms, treatment steps, precautions, and urgent-care guidance. However, prompt engineering alone did not ground the answers in the Merck Manual.<br><br>3. The RAG-based approach improved reliability because the model retrieved relevant medical manual chunks before generating responses. This made the answers more source-grounded and more suitable for a healthcare decision-support prototype.<br><br>4. The data preparation pipeline successfully handled a large medical PDF with more than 4,000 pages. The document was cleaned, split into chunks, embedded, and stored in a vector database for retrieval.<br><br>5. RAG parameter tuning showed that retrieval size and generation settings affect answer quality. A moderate retrieval value such as k=4 gave a good balance between enough context and avoiding too much irrelevant information.<br><br>6. The evaluation results showed high groundedness and relevance scores across the five project questions. This suggests that the RAG pipeline was able to retrieve useful information and generate answers aligned with the user questions.<br><br>7. A limitation of the evaluation is that the same LLM was used as a judge. Therefore, the evaluation is useful for automated testing but should not replace human medical expert review.<br><br><h3>Business Recommendations</h3><br><br>1. The healthcare center should use the RAG assistant as a decision-support tool, not as a replacement for doctors or qualified medical professionals.<br><br>2. The system should always show source page numbers or source chunks so that healthcare professionals can verify the answer against the original medical manual.<br><br>3. The assistant should follow a standard answer format for medical questions. A consistent structure improves readability, reduces confusion, and supports faster decision-making.<br><br>4. The system should include a fallback response when the retrieved context is insufficient. In such cases, the assistant should clearly state that the manual does not provide enough information instead of guessing.<br><br>5. Before deployment, the system should be validated by medical experts using a larger test set of questions across multiple specialties.<br><br>6. The knowledge base should be updated regularly because medical guidelines can change. Using outdated sources may reduce clinical reliability.<br><br>7. For future improvement, the retrieval system can be enhanced by removing front matter and table-of-contents chunks, adding metadata filters, using MMR retrieval, or combining keyword search with semantic search.<br><br>8. The organization should monitor user feedback, incorrect answers, missing information, and retrieval failures to continuously improve the system.</div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
